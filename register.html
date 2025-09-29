@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/register.css">
     <title>Calendar: course booking </title>
 </head>
-<body>
 
+<body>
+    <a href="./index.html"></a>
+    <ul class="booked-courses">
+        <!-- This list will be filled dynamically with courses booked by user. -->
+        <template id="booked-item">
+            <!-- Template used to add a booked course -->
+            <li>
+                <p class="info"></p>
+                <button class="remove-item"></button>
+                <!-- User will have an abilty to remove an appointment by clicking the button above -->
+            </li>
+        </template>
+    </ul>
+    <form>
+        <div class="form-item">
+            <label>Phone number</label>
+            <input type="tel" name="phone">
+        </div>
+        <div class="form-item">
+            <label>Email</label>
+            <input type="email" name="email">
+        </div>
+        <input type="submit">
+        <!-- For now I will be building this project without authorization. May add it in the future  -->
+    </form>
 </body>
+
 </html>
