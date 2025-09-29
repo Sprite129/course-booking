@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+}
+
+.main-carousel-controls,
+.carousel-controls,
+.pc-social-media,
+.pc-menu {
+    display: none;
+}
