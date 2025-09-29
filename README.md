@@ -19,8 +19,8 @@ This project is a **mock** course booking website with several features such as:
 I may also add registration and login feature but for now I want to concentrate on my basic design and improve it.
 
 ## Plans
-- [ ] Write basic HTML  
-- [ ] Update GitHub as I go  
+- [x] Write basic HTML  
+- [x] Update GitHub as I go  
 - [ ] Write CSS  
 - [ ] Write JS  
 - [ ] Test the system
