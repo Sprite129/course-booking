@@ -1,3 +1,8 @@
+:root {
+    --main-color: #FA9147;
+    --secondary-color: #001626;
+}
+
 * {
     margin: 0;
 }
@@ -8,4 +13,49 @@
 .pc-menu,
 .pc-logo {
     display: none;
+}
+
+.sticky-header {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 15px;
+}
+
+.sticky-header img {
+    padding-top: 5px;
+    width: 210px;
+    height: 40px;
+}
+
+#burger-menu {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 35px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#burger-menu span {
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 10%;
+}
+
+.main-carousel-container {
+    overflow: hidden;
+}
+
+.main-carousel-track {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+
+.main-carousel-item:first-child {
+    background-image: url(../assets/images/about-us-small.png);
 }
