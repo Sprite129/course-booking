@@ -1,6 +1,8 @@
 :root {
     --main-color: #FA9147;
     --secondary-color: #001626;
+    --main-lighter: #FFD0AE;
+    --activated-button: #003E6B;
 }
 
 * {
@@ -13,6 +15,20 @@
 .pc-menu,
 .pc-logo {
     display: none;
+}
+
+body {
+    font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1, h2 {
+    font-family: "Noto Sans", "Open Sans", "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .sticky-header {
@@ -47,15 +63,61 @@
 
 .main-carousel-container {
     overflow: hidden;
+    color: white;
+    width: 100vw;
+    background-color: var(--main-lighter);
 }
 
 .main-carousel-track {
     display: flex;
-    justify-content: flex-start;
     flex-wrap: nowrap;
+    position: relative;
+    /* right: 100vw; */
+    /* right: 200vw; */
+    /* Slide positions */
+    width: 300vw;
+    height: 50vh;
+    padding: 10px 0;
 }
 
+.main-carousel-item {
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 20px 30px;
+}
 
 .main-carousel-item:first-child {
     background-image: url(../assets/images/about-us-small.png);
+}
+
+.main-carousel-item:nth-child(2) {
+    background-image: url(../assets/images/education-format-small.png);
+}
+
+.main-carousel-item:last-child {
+    background-image: url(../assets/images/register-now-small.png);
+}
+
+.main-carousel-item h1, .main-carousel-item h2 {
+    margin: 0 30px 20px;
+}
+
+.main-carousel-item a {
+    display: block;
+    width: 120px;
+    margin: 10px auto;
+    text-align: center;
+    line-height: 1;
+    text-decoration: none;
+    color: white;
+    background-color: #FA9147;
+    padding: 15px;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+}
+
+.main-carousel-item a:hover {
+    background-color: var(--activated-button);
 }
