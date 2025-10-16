@@ -64,24 +64,31 @@ h1, h2 {
 .main-carousel-container {
     overflow: hidden;
     color: white;
-    width: 100vw;
+    width: 100%;
     background-color: var(--main-lighter);
+    height: 60vh;
+    box-shadow: 0px 1px 5px gray;
+    margin-bottom: 5vh
 }
 
 .main-carousel-track {
     display: flex;
     flex-wrap: nowrap;
     position: relative;
-    /* right: 100vw; */
-    /* right: 200vw; */
+    /* right: 100%; */
+    /* right: 200%; */
     /* Slide positions */
-    width: 300vw;
-    height: 50vh;
+    width: 300%;
+    height: calc(100% - 20px);
     padding: 10px 0;
 }
 
 .main-carousel-item {
-    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -108,7 +115,6 @@ h1, h2 {
     display: block;
     width: 120px;
     margin: 10px auto;
-    text-align: center;
     line-height: 1;
     text-decoration: none;
     color: white;
