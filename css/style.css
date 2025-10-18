@@ -2,7 +2,17 @@
     --main-color: #FA9147;
     --secondary-color: #001626;
     --main-lighter: #FFD0AE;
-    --activated-button: #003E6B;
+    --secondary-lighter: #003E6B;
+
+    /* used utopia.fyi type scale tool */
+    --font-size--2: clamp(0.6944rem, 0.6513rem + 0.1919vw, 0.8rem);
+    --font-size--1: clamp(0.8333rem, 0.7652rem + 0.303vw, 1rem);
+    --font-size-0: clamp(1rem, 0.8977rem + 0.4545vw, 1.25rem);
+    --font-size-1: clamp(1.2rem, 1.0517rem + 0.6591vw, 1.5625rem);
+    --font-size-2: clamp(1.44rem, 1.2301rem + 0.933vw, 1.9531rem);
+    --font-size-3: clamp(1.728rem, 1.4362rem + 1.2971vw, 2.4414rem);
+    --font-size-4: clamp(2.0736rem, 1.6734rem + 1.7785vw, 3.0518rem);
+    --font-size-5: clamp(2.4883rem, 1.9457rem + 2.4116vw, 3.8147rem);
 }
 
 * {
@@ -19,16 +29,22 @@
 
 body {
     font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: var(--font-size-0);
     line-height: 1.5;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-family: "Noto Sans", "Open Sans", "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    font-size: 24px;
+    font-size: var(--font-size-3);
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 .sticky-header {
@@ -107,13 +123,13 @@ h1, h2 {
     background-image: url(../assets/images/register-now-small.png);
 }
 
-.main-carousel-item h1, .main-carousel-item h2 {
+.main-carousel-item h1,
+.main-carousel-item h2 {
     margin: 0 30px 20px;
 }
 
 .main-carousel-item a {
     display: block;
-    width: 120px;
     margin: 10px auto;
     line-height: 1;
     text-decoration: none;
@@ -125,5 +141,47 @@ h1, h2 {
 }
 
 .main-carousel-item a:hover {
-    background-color: var(--activated-button);
+    background-color: var(--secondary-lighter);
+}
+
+#course-options h2,
+#booking h2,
+#reviews h2 {
+    color: var(--main-color);
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid var(--main-color);
+    width: calc(var(--font-size-3) * 6);
+    margin: 0 auto;
+}
+
+.carousel-container {
+    width: 60vw;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.carousel-track {
+    display: flex;
+    position: relative;
+    gap: 25px;
+}
+
+.carousel-container-courses {
+    width: 60vw;
+    padding: 50px;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px black;
+    color: var(--secondary-lighter);
+}
+
+.carousel-track ul {
+    list-style: disc;
+}
+
+.carousel-track li::marker {
+    color: var(--secondary-lighter);
 }
