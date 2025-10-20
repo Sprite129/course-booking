@@ -5,18 +5,20 @@
     --secondary-lighter: #003E6B;
 
     /* used utopia.fyi type scale tool */
-    --font-size--2: clamp(0.6944rem, 0.6513rem + 0.1919vw, 0.8rem);
-    --font-size--1: clamp(0.8333rem, 0.7652rem + 0.303vw, 1rem);
-    --font-size-0: clamp(1rem, 0.8977rem + 0.4545vw, 1.25rem);
-    --font-size-1: clamp(1.2rem, 1.0517rem + 0.6591vw, 1.5625rem);
-    --font-size-2: clamp(1.44rem, 1.2301rem + 0.933vw, 1.9531rem);
-    --font-size-3: clamp(1.728rem, 1.4362rem + 1.2971vw, 2.4414rem);
-    --font-size-4: clamp(2.0736rem, 1.6734rem + 1.7785vw, 3.0518rem);
-    --font-size-5: clamp(2.4883rem, 1.9457rem + 2.4116vw, 3.8147rem);
+    /* Updated sizes to fit in 320px width mobile */
+    --font-size--2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
+    --font-size--1: clamp(0.7292rem, 0.635rem + 0.471vw, 1rem);
+    --font-size-0: clamp(0.875rem, 0.7446rem + 0.6522vw, 1.25rem);
+    --font-size-1: clamp(1.05rem, 0.8717rem + 0.8913vw, 1.5625rem);
+    --font-size-2: clamp(1.26rem, 1.0189rem + 1.2054vw, 1.9531rem);
+    --font-size-3: clamp(1.512rem, 1.1887rem + 1.6164vw, 2.4414rem);
+    --font-size-4: clamp(1.8144rem, 1.384rem + 2.1519vw, 3.0518rem);
+    --font-size-5: clamp(2.1773rem, 1.6077rem + 2.8477vw, 3.8147rem);
 }
 
 * {
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 .main-carousel-controls,
@@ -45,6 +47,12 @@ h2 {
 ul {
     list-style: none;
     padding: 0;
+}
+
+header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
 }
 
 .sticky-header {
@@ -158,7 +166,7 @@ hr {
 }
 
 .carousel-container {
-    width: 60vw;
+    width: 65vw;
     margin: 0 auto;
     overflow: hidden;
     padding: 5px;
@@ -166,16 +174,23 @@ hr {
 
 .carousel-track {
     display: flex;
+    width: calc((6 * 65vw) + 25px * 5);
     position: relative;
     gap: 25px;
+    /* right: calc(1 * (65vw + 25px)); */
 }
 
 .carousel-container-courses {
-    width: 60vw;
-    padding: 50px;
+    flex: 1 1 0;
+    padding: 25px;
+    align-content: center;
     box-sizing: border-box;
     box-shadow: 0 0 5px black;
     color: var(--secondary-lighter);
+}
+
+.carousel-container-courses li {
+    margin: 20px 0;
 }
 
 .carousel-track ul {
@@ -184,4 +199,36 @@ hr {
 
 .carousel-track li::marker {
     color: var(--secondary-lighter);
+}
+
+#booking h2 {
+    margin: 3vh 0 0 0;
+}
+
+.calendar-add-card {
+    display: block;
+    margin: 20px auto 0;
+    width: 65vw;
+    height: 5vh;
+    background-color: white;
+    border: none;
+    box-shadow: 0 0 5px black;
+    background-image: url(/assets/controls/plus-icon.svg);
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.calendar-container input[type=submit] {
+    display: block;
+    margin: 3vh auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+}
+
+.calendar-container input[type=submit]:hover {
+    background-color: var(--secondary-lighter);
 }
