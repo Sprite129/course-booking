@@ -1,10 +1,294 @@
+:root {
+    --main-color: #FA9147;
+    --secondary-color: #001626;
+    --main-lighter: #FFD0AE;
+    --secondary-lighter: #003E6B;
+
+    /* used utopia.fyi type scale tool */
+    /* Updated sizes to fit in 320px width mobile */
+    --font-size--2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
+    --font-size--1: clamp(0.7292rem, 0.635rem + 0.471vw, 1rem);
+    --font-size-0: clamp(0.875rem, 0.7446rem + 0.6522vw, 1.25rem);
+    --font-size-1: clamp(1.05rem, 0.8717rem + 0.8913vw, 1.5625rem);
+    --font-size-2: clamp(1.26rem, 1.0189rem + 1.2054vw, 1.9531rem);
+    --font-size-3: clamp(1.512rem, 1.1887rem + 1.6164vw, 2.4414rem);
+    --font-size-4: clamp(1.8144rem, 1.384rem + 2.1519vw, 3.0518rem);
+    --font-size-5: clamp(2.1773rem, 1.6077rem + 2.8477vw, 3.8147rem);
+}
+
 * {
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 .main-carousel-controls,
 .carousel-controls,
 .pc-social-media,
-.pc-menu {
+.pc-menu,
+.pc-logo {
     display: none;
+}
+
+body {
+    font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: var(--font-size-0);
+    line-height: 1.5;
+}
+
+h1,
+h2 {
+    font-family: "Noto Sans", "Open Sans", "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--font-size-3);
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+header {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+.sticky-header {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 15px;
+}
+
+.sticky-header img {
+    padding-top: 5px;
+    width: 210px;
+    height: 40px;
+}
+
+#burger-menu {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 35px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#burger-menu span {
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 10%;
+}
+
+.main-carousel-container {
+    overflow: hidden;
+    color: white;
+    width: 100%;
+    background-color: var(--main-lighter);
+    height: 60vh;
+    box-shadow: 0px 1px 5px gray;
+    margin-bottom: 5vh
+}
+
+.main-carousel-track {
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    /* right: 100%; */
+    /* right: 200%; */
+    /* Slide positions */
+    width: 300%;
+    height: calc(100% - 20px);
+    padding: 10px 0;
+}
+
+.main-carousel-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 20px 30px;
+}
+
+.main-carousel-item:first-child {
+    background-image: url(../assets/images/about-us-small.png);
+}
+
+.main-carousel-item:nth-child(2) {
+    background-image: url(../assets/images/education-format-small.png);
+}
+
+.main-carousel-item:last-child {
+    background-image: url(../assets/images/register-now-small.png);
+}
+
+.main-carousel-item h1,
+.main-carousel-item h2 {
+    margin: 0 30px 20px;
+}
+
+.main-carousel-item a {
+    display: block;
+    margin: 10px auto;
+    line-height: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background-color: #FA9147;
+    padding: 15px;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+}
+
+.main-carousel-item a:hover {
+    background-color: var(--secondary-lighter);
+}
+
+#course-options h2,
+#booking h2,
+#reviews h2 {
+    color: var(--main-color);
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid var(--main-color);
+    width: calc(var(--font-size-3) * 6);
+    margin: 0 auto;
+}
+
+.carousel-container {
+    width: 65vw;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.carousel-track {
+    display: flex;
+    width: calc((6 * 65vw) + 25px * 5);
+    position: relative;
+    gap: 25px;
+    /* right: calc(1 * (65vw + 25px)); */
+}
+
+.carousel-container-courses {
+    flex: 1 1 0;
+    padding: 25px;
+    align-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px black;
+    color: var(--secondary-lighter);
+}
+
+.carousel-container-courses li {
+    margin: 20px 0;
+}
+
+.carousel-track ul {
+    list-style: disc;
+}
+
+.carousel-track li::marker {
+    color: var(--secondary-lighter);
+}
+
+#booking h2 {
+    margin: 3vh 0 0 0;
+}
+
+.calendar-add-card {
+    display: block;
+    margin: 20px auto 0;
+    width: 65vw;
+    height: 5vh;
+    background-color: white;
+    border: none;
+    box-shadow: 0 0 5px black;
+    background-image: url(/assets/controls/plus-icon.svg);
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.calendar-container input[type=submit] {
+    display: block;
+    margin: 3vh auto;
+    font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+}
+
+.calendar-container input[type=submit]:hover {
+    background-color: var(--secondary-lighter);
+}
+
+footer {
+    background-color: var(--secondary-lighter);
+    color: white;
+}
+
+.footer-container {
+    padding: 15px;
+}
+
+.footer-item hr {
+    border-top: 2px solid white;
+    margin: 0 0 25px;
+    width: calc(var(--font-size-1) * 4);
+}
+
+.footer-item p {
+    font-size: var(--font-size--1);
+}
+
+.footer-item > p:first-child {
+    font-size: var(--font-size-1);
+}
+
+.footer-social-media {
+    display: flex;
+    width: 40vw;
+    height: 5vh;
+    margin: 1vh auto 0;
+    gap: 5vw;
+}
+
+.footer-social-media li {
+    flex: 1 1 0;
+}
+
+.footer-social-media a {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.facebook-logo {
+    background-image: url(/assets/logos/facebook-icon.svg);
+}
+
+.insta-logo {
+    background-image: url(/assets/logos/insta-icon.svg);
+}
+
+.tiktok-logo {
+    background-image: url(/assets/logos/tiktok-icon.svg);
 }
