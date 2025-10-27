@@ -21,7 +21,7 @@ I may also add registration and login feature but for now I want to concentrate 
 ## Plans
 - [x] Write basic HTML  
 - [x] Update GitHub as I go  
-- [ ] Write CSS  
+- [ ] Write CSS (In progress...)
 - [ ] Write JS  
 - [ ] Test the system
 - [ ] Refine imperfections
