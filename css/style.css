@@ -224,6 +224,7 @@ hr {
 .calendar-container input[type=submit] {
     display: block;
     margin: 3vh auto;
+    font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
     padding: 10px 20px;
     border-radius: 10px;
