@@ -14,6 +14,7 @@
     --font-size-3: clamp(1.512rem, 1.1887rem + 1.6164vw, 2.4414rem);
     --font-size-4: clamp(1.8144rem, 1.384rem + 2.1519vw, 3.0518rem);
     --font-size-5: clamp(2.1773rem, 1.6077rem + 2.8477vw, 3.8147rem);
+
 }
 
 * {
@@ -185,7 +186,7 @@ hr {
 .carousel-container-courses {
     flex: 1 1 0;
     padding: 25px;
-    align-content: center;
+    align-content: start;
     box-sizing: border-box;
     box-shadow: 0 0 5px black;
     color: var(--secondary-lighter);
@@ -224,13 +225,15 @@ hr {
 .calendar-container input[type=submit] {
     display: block;
     margin: 3vh auto;
+    font-size: var(--font-size-0);
     font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
-    padding: 10px 20px;
+    padding: 13px 35px;
     border-radius: 10px;
     background-color: var(--main-color);
     border: none;
     color: white;
+    transition: background-color 0.5s;
 }
 
 .calendar-container input[type=submit]:hover {
@@ -256,24 +259,26 @@ footer {
     font-size: var(--font-size--1);
 }
 
-.footer-item > p:first-child {
+.footer-item>p:first-child {
     font-size: var(--font-size-1);
 }
 
 .footer-social-media {
     display: flex;
-    width: 40vw;
-    height: 5vh;
+    width: 200px;
+    height: 40px;
     margin: 1vh auto 0;
     gap: 5vw;
 }
 
 .footer-social-media li {
     flex: 1 1 0;
+    align-content: center;
+    justify-items: center;
 }
 
 .footer-social-media a {
-    display: inline-block;
+    display: block;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -281,7 +286,9 @@ footer {
     height: 100%;
 }
 
-.facebook-logo {
+a.facebook-logo {
+    width: 90%;
+    height: 90%;
     background-image: url(/assets/logos/facebook-icon.svg);
 }
 
@@ -291,4 +298,108 @@ footer {
 
 .tiktok-logo {
     background-image: url(/assets/logos/tiktok-icon.svg);
+}
+
+/* mini-tablet */
+@media (min-width: 568px) {
+    .carousel-track {
+        width: calc((3 * 65vw) + 25px * 2);
+    }
+
+    .main-carousel-item:first-child {
+        background-image: url(../assets/images/about-us-large.png);
+    }
+
+    .main-carousel-item:nth-child(2) {
+        background-image: url(../assets/images/education-format-large.png);
+    }
+
+    .main-carousel-item:last-child {
+        background-image: url(../assets/images/register-now-large.png);
+    }
+
+    .calendar-add-card {
+        background-size: 35px;
+    }
+}
+
+/* tablet */
+@media (min-width: 768px) {
+    body {
+        font-size: var(--font-size-1);
+    }
+
+    .sticky-header img {
+        width: 240px;
+        height: 70px;
+    }
+
+    #burger-menu {
+        width: 45px;
+    }
+
+    .main-carousel-item a {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .carousel-container-courses {
+        padding: 30px
+    }
+
+    .calendar-container input[type=submit] {
+        font-size: var(--font-size-1);
+        padding: 20px 55px;
+        border-radius: 15px;
+    }
+
+    .footer-social-media {
+        width: 300px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #burger-menu {
+        display: none;
+    }
+
+    .sticky-header {
+        align-items: center;
+        padding: 0 15px;
+        justify-content: center;
+    }
+
+    .pc-menu {
+        display: block;
+    }
+
+    .pc-menu ul{
+        display: flex;
+    }
+
+    .pc-social-media {
+        display: flex;
+        width: 200px;
+        height: 10vh;   
+    }
+
+    .pc-social-media li {
+        flex: 1 1 0;
+        align-content: center;
+    }    
+
+    .pc-social-media a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    a.facebook-logo {
+        width: 92%;
+        height: 92%;
+    }
 }
