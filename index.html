@@ -60,7 +60,7 @@
             <nav class="pc-menu">
                 <ul class="list-wrap">
                     <li>
-                        <a href="#our-courses" class="link-button">about us</a>
+                        <a href="#top" class="link-button">about us</a>
                     </li>
                     <li>
                         <a href="#booking" class="link-button">booking</a>
@@ -123,7 +123,7 @@
                         <a href="#booking" class="link-button">book a course</a>
                     </div>
                     <div class="main-carousel-item">
-                        <h2>use out booking service</h2>
+                        <h2>use our booking service</h2>
                         <p>Use our convenient online calendar to book a course.</p>
                         <a href="#booking" class="link-button">book a course</a>
                     </div>
@@ -139,7 +139,7 @@
             <hr>
             <h2>Our courses</h2>
             <!-- Built the same way as the main carousel(except it uses list instead of individual divs and container) -->
-            <div class="carousel-container">
+            <div class="carousel-container" id="course-option-carousel">
                 <ul class="carousel-track">
                     <li class="carousel-container-courses">
                         <ul>
@@ -185,7 +185,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="carousel-controls">
+            <div class="carousel-controls" id="course-option-carousel-controls">
                 <button id="courses-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left"></button>
                 <button id="courses-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right"></button>
             </div>
@@ -224,7 +224,7 @@
         <section id="reviews">
             <hr>
             <h2>reviews</h2>
-            <div class="carousel-container">
+            <div class="carousel-container" id="reviews-carousel">
                 <ul class="carousel-track">
                     <template>
                         <!-- Reviews will be loaded dynamically. This template will be cloned and inserted filled with data from json-server -->
@@ -239,7 +239,7 @@
                     </template>
                 </ul>
             </div>
-            <div class="carousel-controls">
+            <div class="carousel-controls" id="reviews-carousel-controls">
                 <button id="reviews-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left"></button>
                 <button id="reviews-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right"></button>
             </div>
