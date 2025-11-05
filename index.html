@@ -73,9 +73,9 @@
                     </li>
                 </ul>
             </nav>
-            <div class="logo-container">
+            <a href="#top" class="logo-container">
                 <img src="./assets/logos/logo.svg" alt="Website logo">
-            </div>
+            </a>
             <button id="burger-menu" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
@@ -194,11 +194,8 @@
             <h2>book a course</h2>
             <hr>
             <form id="calendar-form" class="calendar-container">
-                <button class="calendar-add-card" aria-label="Add new appointment"></button>
-                <!--This button above will be an empty tile with plus sign. Upon clicking it another tile with options for booking will be added-->
-                <template id="calendar-card-template">
-                    <!-- This template will be cloned and inserted to make a new appointment. Default ids will be changed via JavaScript -->
-                    <div class="calendar-card">
+                <div class="calendar-flex">
+                    <!-- <div class="calendar-card">
                         <button class="calendar-card-close" aria-label="Remove the appointment"></button>
                         <label for="day-default">Day</label>
                         <select name="day" id="day-default">
@@ -216,8 +213,32 @@
                             <option value="robotics">Robotics</option>
                             <option value="data-science">Data Science</option>
                         </select>
-                    </div>
-                </template>
+                    </div> -->
+                    <button class="calendar-add-card" aria-label="Add new appointment"></button>
+                    <!--This button above will be an empty tile with plus sign. Upon clicking it another tile with options for booking will be added-->
+                    <template id="calendar-card-template">
+                        <!-- This template will be cloned and inserted to make a new appointment. Default ids will be changed via JavaScript -->
+                        <div class="calendar-card">
+                            <button class="calendar-card-close" aria-label="Remove the appointment"></button>
+                            <label for="day-default">Day</label>
+                            <select name="day" id="day-default">
+                                <option value="" selected disabled>Day of the week</option>
+                                <option value="monday">Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                                <option value="thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                            </select>
+                            <label for="course-default">Course</label>
+                            <select name="course" id="course-default">
+                                <option value="" selected disabled>Select course</option>
+                                <option value="programming">Programming</option>
+                                <option value="robotics">Robotics</option>
+                                <option value="data-science">Data Science</option>
+                            </select>
+                        </div>
+                    </template>
+                </div>
                 <input type="submit" name="book" value="BOOK">
             </form>
         </section>
@@ -237,6 +258,22 @@
                             </article>
                         </li>
                     </template>
+                    <li class="carousel-container-courses carousel-no-data">
+                        No data
+                    </li>
+                    <li class="carousel-container-courses carousel-no-data">
+                        No data
+                    </li>
+                    <li class="carousel-container-courses carousel-no-data">
+                        No data
+                    </li>
+                    <li class="carousel-container-courses carousel-no-data">
+                    </li>
+                    <li class="carousel-container-courses carousel-no-data">
+                        No data
+                    </li>
+                    <li class="carousel-container-courses carousel-no-data">
+                    </li>
                 </ul>
             </div>
             <div class="carousel-controls" id="reviews-carousel-controls">
@@ -267,9 +304,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="footer-item pc-logo">
+            <a href="#top" class="footer-item pc-logo">
                 <img src="./assets/logos/logo.svg" alt="Website logo">
-            </div>
+            </a>
         </div>
     </footer>
 </body>
