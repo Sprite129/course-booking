@@ -50,12 +50,17 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    font-family: "Noto Sans", "Open Sans", "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--font-size-1);
+}
+
 ul {
     list-style: none;
     padding: 0;
 }
 
-header {
+body>header {
     position: sticky;
     top: 0px;
     z-index: 1;
@@ -98,6 +103,87 @@ header {
 
 #burger-menu:active {
     transform: scale(0.9);
+}
+
+.mobile-menu {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    background-color: var(--main-color);
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 30px 20px 40px;
+}
+
+#close-nav {
+    flex: 0 0 5vh;
+    display: block;
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    aspect-ratio: 1;
+    background-image: url(../assets/controls/cross.svg);
+    background-size: contain;
+    transition: 0.2s transform ease-in-out;
+}
+
+#close-nav:active {
+    transform: scale(1.1);
+}
+
+.mobile-menu .list-wrap {
+    text-align: center;
+    font-size: var(--font-size-3);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.mobile-menu > .list-wrap li {
+    margin-bottom: 3vh;
+}
+
+.mobile-menu a {
+    color: white;
+    transition: 0.2s color ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: var(--secondary-lighter);
+}
+
+.social-media-mobile {
+    flex: 1 1 0;
+    align-content: end;
+}
+
+.social-media-mobile .list-wrap {
+    display: flex;
+    height: max(6vh, 50px);
+    width: 60%;
+    margin: 0 auto;
+}
+
+.social-media-mobile .list-wrap li {
+    flex: 1 1 0;
+    align-content: center;
+    justify-items: center;
+}
+
+.social-media-mobile a {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-media-mobile a:hover {
+    transform: scale(1.1);
 }
 
 .main-carousel-container {
@@ -222,10 +308,6 @@ hr {
     color: var(--secondary-lighter);
 }
 
-.carousel-no-data {
-    flex: 0.3 1 0;
-}
-
 #booking h2 {
     margin: 3vh 0 0 0;
 }
@@ -329,8 +411,30 @@ hr {
     background-color: lightgray;
 }
 
-.carousel-no-data {
-    height: 25vh;
+.carousel-tile-reviews {
+    height: auto;
+}
+
+.carousel-tile-reviews p{
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.carousel-tile-reviews img {
+    width: 30%;
+    aspect-ratio: 1;
+    box-shadow: 0 0 5px black;
+    border-radius: 100%;
+}
+
+.review-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
 }
 
 footer {
@@ -581,7 +685,7 @@ a.facebook-logo {
     .main-carousel-controls button:hover:last-child {
         transform: scale(1.1);
     }
-    
+
     .main-carousel-controls button:active:first-child {
         transform: scale(-0.9);
     }
@@ -589,7 +693,7 @@ a.facebook-logo {
     .main-carousel-controls button:active:last-child {
         transform: scale(0.9);
     }
-    
+
     #course-options,
     #reviews {
         position: relative;
@@ -690,13 +794,17 @@ a.facebook-logo {
     }
 
     .calendar-flex {
-        width: 100%;
+        margin: 3vh auto;
+        width: 90%;
         display: flex;
-        justify-content: center;
+        padding: 5px;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        mask-image: linear-gradient(to left, transparent, black 3%, black 97%, transparent);
     }
 
     .calendar-card {
-        flex: 0 0 19%;
+        flex: 0 0 20vw;
         border-bottom: none;
         border-right: 7px solid var(--secondary-lighter);
     }
@@ -706,13 +814,10 @@ a.facebook-logo {
     }
 
     .calendar-add-card {
-        flex: 0 0 19%;
+        flex: 0 0 20vw;
         height: min(50vh, 500px);
         background-size: 20% auto;
-    }
-
-    .carousel-no-data {
-        height: min(40vh, 450px);
+        justify-self: center;
     }
 }
 
@@ -730,16 +835,9 @@ a.facebook-logo {
         flex: 0.1 1 0;
     }
 
-    .carousel-track {
-        height: min(50vh, 500px);
-    }
-
     .carousel-container-courses {
-        padding: 30px 60px;
-    }
-
-    .carousel-no-data {
-        height: auto;
+        padding: 40px;
+        aspect-ratio: 1;
     }
 
     .footer-container {

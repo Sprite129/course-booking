@@ -271,6 +271,25 @@
                             <option value="data-science">Data Science</option>
                         </select>
                     </div>
+                    <div class="calendar-card">
+                        <button class="calendar-card-close" aria-label="Remove the appointment"></button>
+                        <label for="day-default">Day</label>
+                        <select name="day" id="day-default">
+                            <option value="" selected disabled>Day of the week</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                        </select>
+                        <label for="course-default">Course</label>
+                        <select name="course" id="course-default">
+                            <option value="" selected disabled>Select course</option>
+                            <option value="programming">Programming</option>
+                            <option value="robotics">Robotics</option>
+                            <option value="data-science">Data Science</option>
+                        </select>
+                    </div>
                     <button class="calendar-add-card" aria-label="Add new appointment"></button>
                     <!--This button above will be an empty tile with plus sign. Upon clicking it another tile with options for booking will be added-->
                     <template id="calendar-card-template">
@@ -308,28 +327,68 @@
                         <!-- Reviews will be loaded dynamically. This template will be cloned and inserted filled with data from json-server -->
                         <li class="carousel-tile-reviews">
                             <article>
-                                <img alt="Profile picture of the reviewer" class="review-icon">
-                                <h3 class="user-name"></h3>
-                                <div class="rating"></div>
-                                <p class="review-text"></p>
-                            </article>
+                            <header>
+                                <div class="review-header-flex">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <h3 class="user-name">No data</h3>
+                                </div>
+                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
+                            </header>
+                            <p class="review-text">No data</p>
+                        </article>
                         </li>
                     </template>
-                    <li class="carousel-container-courses carousel-no-data">
-                        No data
+                    <li class="carousel-container-courses carousel-tile-reviews">
+                         <article>
+                            <header>
+                                <div class="review-header-flex">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <h3 class="user-name">No data</h3>
+                                </div>
+                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
+                            </header>
+                            <p class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non asperiores blanditiis vero, dolorum aliquam doloremque, voluptatem tempore velit consequuntur et nostrum nisi. Dolor consequuntur iure saepe et eius eveniet dolores laboriosam laudantium accusamus commodi architecto porro, rerum asperiores nostrum ea facilis voluptatem dicta cupiditate, officia assumenda est qui nesciunt esse?</p>
+                        </article>
                     </li>
-                    <li class="carousel-container-courses carousel-no-data">
-                        No data
+                    <li class="carousel-container-courses carousel-tile-reviews">
+                         <article>
+                            <header>
+                                <div class="review-header-flex">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <h3 class="user-name">No data</h3>
+                                </div>
+                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
+                            </header>
+                            <p class="review-text">No data</p>
+                        </article>
                     </li>
-                    <li class="carousel-container-courses carousel-no-data">
-                        No data
+                    <li class="carousel-container-courses carousel-tile-reviews">
+                         <article>
+                            <header>
+                                <div class="review-header-flex">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <h3 class="user-name">No data</h3>
+                                </div>
+                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
+                            </header>
+                            <p class="review-text">No data</p>
+                        </article>
                     </li>
-                    <li class="carousel-container-courses carousel-no-data">
+                    <li class="carousel-container-courses carousel-tile-reviews">
                     </li>
-                    <li class="carousel-container-courses carousel-no-data">
-                        No data
+                    <li class="carousel-container-courses carousel-tile-reviews">
+                         <article>
+                            <header>
+                                <div class="review-header-flex">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <h3 class="user-name">No data</h3>
+                                </div>
+                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
+                            </header>
+                            <p class="review-text">No data</p>
+                        </article>
                     </li>
-                    <li class="carousel-container-courses carousel-no-data">
+                    <li class="carousel-container-courses carousel-tile-reviews">
                     </li>
                 </ul>
             </div>
