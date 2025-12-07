@@ -18,7 +18,8 @@
     color: white;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -40,6 +41,7 @@ a {
 
 main {
     padding: 1vh 4vw;
+    flex: 1 1 0;
 }
 
 h1 {
@@ -48,6 +50,7 @@ h1 {
     text-transform: uppercase;
     font-size: var(--font-size-3);
     align-content: center;
+    margin-bottom: 3vh;
 }
 
 .form-item {
@@ -58,11 +61,19 @@ h1 {
     line-height: 1.5;
 }
 
+.form-item:first-child {
+    margin-bottom: 1vh;
+}
+
 ul {
-    height: 160px;
-    padding: 5.5vw 5.5vw 0;
+    height: min(23vh, 250px);
     align-content: start;
-    overflow-y: auto;
+    overflow-y: scroll;
+    list-style-position: inside;
+    padding: 0;
+    mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    scrollbar-color: var(--secondary-lighter) transparent;
+    scrollbar-width: thin;
 }
 
 li {
@@ -70,18 +81,39 @@ li {
     font-size: var(--font-size-1);
 }
 
-input[type=tel], input[type=email] {
+.list-item-container {
+    width: 90%;
+    justify-self: center;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-item {
+    border: none;
+    background-image: url(../assets/controls/remove-icon.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1;
+    width: min(8%, 30px);
+}
+
+input[type=tel],
+input[type=email] {
     border: none;
     border-bottom: 2px solid white;
     line-height: 1.5;
     font-size: var(--font-size-1);
 }
 
-input[type=tel]:focus, input[type=email]:focus {
+input[type=tel]:focus,
+input[type=email]:focus {
     outline: none;
 }
 
-input[type=tel]:-webkit-autofill, input[type=email]:-webkit-autofill {
+input[type=tel]:-webkit-autofill,
+input[type=email]:-webkit-autofill {
     -webkit-text-fill-color: #fff;
     box-shadow: 0 0 0 50px var(--main-color) inset;
 }
@@ -96,9 +128,15 @@ input[type=submit] {
     border-radius: 10px;
     border: none;
     color: white;
+    transition: transform ease-in-out 0.2s, background-color ease-in-out 0.2s;
+}
+
+input[type=submit]:hover {
+    transform: scale(1.1);
 }
 
 input[type=submit]:active {
+    transform: scale(0.9);
     background-color: gray;
 }
 
@@ -106,9 +144,9 @@ footer {
     flex: 1 1 0;
     align-content: end;
     text-align: center;
-    padding-bottom: 3vh; 
+    padding-bottom: 3vh;
 }
 
 footer img {
-    width: 60vw;
+    width: min(60vw, 600px);
 }

@@ -8,11 +8,13 @@
     <!-- Title font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <!-- Regular text font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <title>Calendar: course booking</title>
 </head>
 
@@ -23,16 +25,61 @@
     <main>
         <h1>Confirm your appointments</h1>
         <ul class="booked-courses">
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
             <!-- This list will be filled dynamically with courses booked by user. -->
             <template id="booked-item">
                 <li>
+                    <div class="list-item-container">
                     <p class="info"></p>
                     <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
                 </li>
             </template>
         </ul>
