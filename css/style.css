@@ -14,11 +14,23 @@
     --font-size-3: clamp(1.512rem, 1.1887rem + 1.6164vw, 2.4414rem);
     --font-size-4: clamp(1.8144rem, 1.384rem + 2.1519vw, 3.0518rem);
     --font-size-5: clamp(2.1773rem, 1.6077rem + 2.8477vw, 3.8147rem);
+
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 * {
     margin: 0;
-    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: var(--font-size-0);
+    line-height: 1.5;
 }
 
 .main-carousel-controls,
@@ -27,12 +39,6 @@
 .pc-menu,
 .pc-logo {
     display: none;
-}
-
-body {
-    font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: var(--font-size-0);
-    line-height: 1.5;
 }
 
 h1,
@@ -44,12 +50,17 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    font-family: "Noto Sans", "Open Sans", "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--font-size-1);
+}
+
 ul {
     list-style: none;
     padding: 0;
 }
 
-header {
+body>header {
     position: sticky;
     top: 0px;
     z-index: 1;
@@ -77,12 +88,102 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: transform 0.2s ease-in-out;
 }
 
 #burger-menu span {
     background-color: var(--secondary-color);
     width: 100%;
     height: 10%;
+}
+
+#burger-menu:hover {
+    transform: scale(1.1);
+}
+
+#burger-menu:active {
+    transform: scale(0.9);
+}
+
+.mobile-menu {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    background-color: var(--main-color);
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 30px 20px 40px;
+}
+
+#close-nav {
+    flex: 0 0 5vh;
+    display: block;
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    aspect-ratio: 1;
+    background-image: url(../assets/controls/cross.svg);
+    background-size: contain;
+    transition: 0.2s transform ease-in-out;
+}
+
+#close-nav:active {
+    transform: scale(1.1);
+}
+
+.mobile-menu .list-wrap {
+    text-align: center;
+    font-size: var(--font-size-3);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.mobile-menu > .list-wrap li {
+    margin-bottom: 3vh;
+}
+
+.mobile-menu a {
+    color: white;
+    transition: 0.2s color ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: var(--secondary-lighter);
+}
+
+.social-media-mobile {
+    flex: 1 1 0;
+    align-content: end;
+}
+
+.social-media-mobile .list-wrap {
+    display: flex;
+    height: max(6vh, 50px);
+    width: 60%;
+    margin: 0 auto;
+}
+
+.social-media-mobile .list-wrap li {
+    flex: 1 1 0;
+    align-content: center;
+    justify-items: center;
+}
+
+.social-media-mobile a {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-media-mobile a:hover {
+    transform: scale(1.1);
 }
 
 .main-carousel-container {
@@ -147,17 +248,22 @@ header {
     background-color: #FA9147;
     padding: 15px;
     border-radius: 10px;
-    transition: background-color 0.5s;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .main-carousel-item a:hover {
     background-color: var(--secondary-lighter);
 }
 
+.main-carousel-item a:active {
+    background-color: lightgray;
+}
+
 #course-options h2,
 #booking h2,
 #reviews h2 {
     color: var(--main-color);
+    margin-bottom: 1vh;
 }
 
 hr {
@@ -185,8 +291,7 @@ hr {
 .carousel-container-courses {
     flex: 1 1 0;
     padding: 25px;
-    align-content: center;
-    box-sizing: border-box;
+    align-content: start;
     box-shadow: 0 0 5px black;
     color: var(--secondary-lighter);
 }
@@ -207,37 +312,133 @@ hr {
     margin: 3vh 0 0 0;
 }
 
+.calendar-flex {
+    margin-top: 3vh;
+    justify-items: center;
+}
+
+.calendar-card {
+    width: min(65vw, 400px);
+    display: flex;
+    padding: 25px;
+    box-sizing: border-box;
+    flex-direction: column;
+    color: var(--secondary-lighter);
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 0 5px black;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.calendar-card-close {
+    width: 8%;
+    aspect-ratio: 1;
+    background-image: url(../assets/controls/cross.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: white;
+    align-self: flex-end;
+    margin-bottom: 7%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.calendar-card-close:hover {
+    transform: scale(1.1);
+}
+
+.calendar-card-close:active {
+    transform: scale(0.9);
+}
+
+.calendar-card label:nth-child(4) {
+    margin-top: 10%;
+}
+
+.calendar-card select {
+    font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: var(--font-size-0);
+}
+
+.calendar-card select:last-child {
+    margin-bottom: 13%;
+}
+
 .calendar-add-card {
     display: block;
-    margin: 20px auto 0;
-    width: 65vw;
+    width: min(65vw, 400px);
     height: 5vh;
     background-color: white;
     border: none;
     box-shadow: 0 0 5px black;
     background-image: url(/assets/controls/plus-icon.svg);
-    background-size: 20px;
+    background-size: auto 80%;
     background-position: center;
     background-repeat: no-repeat;
+    transition: transform 0.2s ease-in-out;
+}
+
+.calendar-add-card:hover {
+    transform: scale(1.02);
+}
+
+.calendar-add-card:active {
+    transform: scale(0.98);
 }
 
 .calendar-container input[type=submit] {
     display: block;
     margin: 3vh auto;
+    font-size: var(--font-size-0);
     font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
-    padding: 10px 20px;
+    line-height: 1;
+    padding: 13px 35px;
     border-radius: 10px;
     background-color: var(--main-color);
     border: none;
     color: white;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .calendar-container input[type=submit]:hover {
     background-color: var(--secondary-lighter);
 }
 
+.calendar-container input[type=submit]:active {
+    background-color: lightgray;
+}
+
+.carousel-tile-reviews {
+    height: auto;
+}
+
+.carousel-tile-reviews p{
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.carousel-tile-reviews img {
+    width: 30%;
+    aspect-ratio: 1;
+    box-shadow: 0 0 5px black;
+    border-radius: 100%;
+}
+
+.review-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
 footer {
+    margin-top: 6vh;
     background-color: var(--secondary-lighter);
     color: white;
 }
@@ -256,32 +457,45 @@ footer {
     font-size: var(--font-size--1);
 }
 
-.footer-item > p:first-child {
+.footer-item>p:first-child {
     font-size: var(--font-size-1);
 }
 
 .footer-social-media {
     display: flex;
-    width: 40vw;
-    height: 5vh;
+    width: 200px;
+    height: 40px;
     margin: 1vh auto 0;
     gap: 5vw;
 }
 
 .footer-social-media li {
     flex: 1 1 0;
+    align-content: center;
+    justify-items: center;
 }
 
 .footer-social-media a {
-    display: inline-block;
+    display: block;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     width: 100%;
     height: 100%;
+    transition: transform 0.2s ease-in-out;
 }
 
-.facebook-logo {
+.footer-social-media a:hover {
+    transform: scale(1.1);
+}
+
+.footer-social-media a:active {
+    transform: scale(0.9);
+}
+
+a.facebook-logo {
+    width: 90%;
+    height: 90%;
     background-image: url(/assets/logos/facebook-icon.svg);
 }
 
@@ -291,4 +505,342 @@ footer {
 
 .tiktok-logo {
     background-image: url(/assets/logos/tiktok-icon.svg);
+}
+
+/* mini-tablet */
+@media (min-width: 568px) {
+    .carousel-track {
+        width: calc((3 * 65vw) + 25px * 2);
+    }
+
+    .main-carousel-item:first-child {
+        background-image: url(../assets/images/about-us-large.png);
+    }
+
+    .main-carousel-item:nth-child(2) {
+        background-image: url(../assets/images/education-format-large.png);
+    }
+
+    .main-carousel-item:last-child {
+        background-image: url(../assets/images/register-now-large.png);
+    }
+}
+
+/* tablet */
+@media (min-width: 768px) {
+    body {
+        font-size: var(--font-size-1);
+    }
+
+    .sticky-header img {
+        width: 240px;
+        height: 70px;
+    }
+
+    #burger-menu {
+        width: 45px;
+    }
+
+    .main-carousel-item a {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .carousel-container-courses {
+        padding: 30px
+    }
+
+    .calendar-container input[type=submit] {
+        font-size: var(--font-size-1);
+        padding: 20px 55px;
+        border-radius: 15px;
+    }
+
+    .footer-social-media {
+        width: 300px;
+        height: 50px;
+    }
+}
+
+/* Small laptops and large tablets */
+@media (min-width: 1024px) {
+    html {
+        scrollbar-width: auto;
+    }
+
+    #burger-menu {
+        display: none;
+    }
+
+    .sticky-header {
+        align-items: center;
+        padding: 0 15px;
+    }
+
+    .pc-menu {
+        flex: 1 1 0;
+        display: block;
+        font-size: var(--font-size--1);
+    }
+
+    .pc-menu ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pc-menu a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: white;
+        transition: color 0.1s;
+    }
+
+    .pc-menu a:hover {
+        text-decoration: underline;
+    }
+
+    .pc-menu a:active {
+        color: var(--secondary-lighter);
+    }
+
+    .logo-container {
+        flex: 1 1 0;
+        text-align: center;
+    }
+
+    .pc-social-media {
+        flex: 1 1 0;
+        display: flex;
+        height: 35px;
+        justify-content: end;
+    }
+
+    .pc-social-media li {
+        flex: 0.15 1 0;
+        align-content: center;
+    }
+
+    .pc-social-media a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .pc-social-media a:hover {
+        transform: scale(1.1);
+    }
+
+    .pc-social-media a:active {
+        transform: scale(0.9);
+    }
+
+    a.facebook-logo {
+        width: 92%;
+        height: 92%;
+    }
+
+    .main-carousel-container {
+        height: 80vh;
+        anchor-name: --main-carousel;
+    }
+
+    .main-carousel-item {
+        padding: 20px 14vw;
+    }
+
+    .main-carousel-controls {
+        display: flex;
+        margin: 0 auto;
+        width: 95%;
+        height: 60px;
+        justify-content: space-between;
+        position: absolute;
+        position-anchor: --main-carousel;
+        align-self: anchor-center;
+        justify-self: anchor-center;
+    }
+
+    .main-carousel-controls button {
+        aspect-ratio: 1;
+        border: none;
+        background-color: transparent;
+        background-image: url(../assets/controls/white-arrow.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease;
+    }
+
+    .main-carousel-controls button:first-child {
+        transform: scale(-1);
+    }
+
+    .main-carousel-controls button:hover:first-child {
+        transform: scale(-1.1);
+    }
+
+    .main-carousel-controls button:hover:last-child {
+        transform: scale(1.1);
+    }
+
+    .main-carousel-controls button:active:first-child {
+        transform: scale(-0.9);
+    }
+
+    .main-carousel-controls button:active:last-child {
+        transform: scale(0.9);
+    }
+
+    #course-options,
+    #reviews {
+        position: relative;
+    }
+
+    #course-option-carousel {
+        anchor-name: --course-option-anchor;
+    }
+
+    .carousel-controls {
+        display: flex;
+        margin: 0 auto;
+        width: 85%;
+        height: 60px;
+        justify-content: space-between;
+    }
+
+    .carousel-controls button {
+        aspect-ratio: 1;
+        border: none;
+        background-color: white;
+        box-shadow: 0 0 5px black;
+        border-radius: 100%;
+        background-image: url(../assets/controls/blue-arrow.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        transition: transform 0.2s ease;
+    }
+
+    .carousel-controls button:first-child {
+        transform: scale(-1);
+    }
+
+    .carousel-controls button:first-child:hover {
+        transform: scale(-1.1);
+    }
+
+    .carousel-controls button:last-child:hover {
+        transform: scale(1.1);
+    }
+
+    .carousel-controls button:active {
+        background-color: lightgray;
+    }
+
+    #course-option-carousel-controls {
+        position: absolute;
+        position-anchor: --course-option-anchor;
+        justify-self: anchor-center;
+        align-self: anchor-center;
+    }
+
+    #reviews-carousel {
+        anchor-name: --reviews-anchor;
+    }
+
+    #reviews-carousel-controls {
+        position: absolute;
+        position-anchor: --reviews-anchor;
+        align-self: anchor-center;
+        justify-self: anchor-center;
+    }
+
+    footer {
+        margin-top: 15vh;
+    }
+
+    .footer-social-media {
+        margin: 1vh 0;
+        width: 200px;
+        gap: 0;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pc-logo {
+        display: block;
+        align-self: center;
+    }
+
+    .pc-logo img {
+        width: 288px;
+    }
+
+    .footer-social-media a {
+        background-position: left;
+    }
+}
+
+/* Laptops */
+@media (min-width: 1200px) {
+    .carousel-track {
+        width: calc((2 * 65vw) + 25px * 1);
+    }
+
+    .calendar-flex {
+        margin: 3vh auto;
+        width: 90%;
+        display: flex;
+        padding: 5px;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        mask-image: linear-gradient(to left, transparent, black 3%, black 97%, transparent);
+    }
+
+    .calendar-card {
+        flex: 0 0 20vw;
+        border-bottom: none;
+        border-right: 7px solid var(--secondary-lighter);
+    }
+
+    .calendar-card select {
+        font-size: var(--font-size-0);
+    }
+
+    .calendar-add-card {
+        flex: 0 0 20vw;
+        height: min(50vh, 500px);
+        background-size: 20% auto;
+        justify-self: center;
+    }
+}
+
+/* Large laptops and PCs */
+@media (min-width: 1600px) {
+    .sticky-header {
+        padding: 0 60px;
+    }
+
+    .pc-menu {
+        font-size: var(--font-size-0);
+    }
+
+    .pc-social-media li {
+        flex: 0.1 1 0;
+    }
+
+    .carousel-container-courses {
+        padding: 40px;
+        aspect-ratio: 1;
+    }
+
+    .footer-container {
+        padding: 20px 60px;
+    }
 }
