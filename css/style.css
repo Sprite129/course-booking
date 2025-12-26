@@ -206,6 +206,7 @@ body>header {
     width: 300%;
     height: calc(100% - 20px);
     padding: 10px 0;
+    transition: transform 0.5s ease-in-out;
 }
 
 .main-carousel-item {
@@ -285,7 +286,7 @@ hr {
     width: calc((6 * 65vw) + 25px * 5);
     position: relative;
     gap: 25px;
-    /* right: calc(1 * (65vw + 25px)); */
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-container-courses {

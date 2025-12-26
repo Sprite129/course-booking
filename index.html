@@ -97,9 +97,9 @@
     <main>
         <section id="our-courses">
             <!-- Container of carousel with overflow: hidden -->
-            <div class="main-carousel-container">
+            <div class="main-carousel-container" data-carousel-container>
                 <!-- Moving part of the carousel -->
-                <div class="main-carousel-track">
+                <div class="main-carousel-track" data-carousel-track>
                     <div class="main-carousel-item">
                         <!-- Added call to action! -->
                         <h1>learn and grow with us</h1>
@@ -131,16 +131,16 @@
             </div>
             <!-- Controls are out of carousel container to avoid moving them with track -->
             <div class="main-carousel-controls">
-                <button id="main-carousel-button-l" aria-label="Scroll carousel to the left"></button>
-                <button id="main-carousel-button-r" aria-label="Scroll carousel to the right"></button>
+                <button id="main-carousel-button-l" aria-label="Scroll carousel to the left" data-carousel-btn-l></button>
+                <button id="main-carousel-button-r" aria-label="Scroll carousel to the right" data-carousel-btn-r></button>
             </div>
         </section>
         <section id="course-options">
             <hr>
             <h2>Our courses</h2>
             <!-- Built the same way as the main carousel(except it uses list instead of individual divs and container) -->
-            <div class="carousel-container" id="course-option-carousel">
-                <ul class="carousel-track">
+            <div class="carousel-container" id="course-option-carousel" data-carousel-container="true">
+                <ul class="carousel-track" data-carousel-track>
                     <li class="carousel-container-courses">
                         <ul>
                             <li>Programming for Beginners and Professionals</li>
@@ -186,8 +186,8 @@
                 </ul>
             </div>
             <div class="carousel-controls" id="course-option-carousel-controls">
-                <button id="courses-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left"></button>
-                <button id="courses-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right"></button>
+                <button id="courses-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left" data-carousel-btn-l></button>
+                <button id="courses-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right" data-carousel-btn-r></button>
             </div>
         </section>
         <section id="booking">
@@ -321,8 +321,8 @@
         <section id="reviews">
             <hr>
             <h2>reviews</h2>
-            <div class="carousel-container" id="reviews-carousel">
-                <ul class="carousel-track">
+            <div class="carousel-container" id="reviews-carousel" data-carousel-container="true">
+                <ul class="carousel-track" data-carousel-track>
                     <template>
                         <!-- Reviews will be loaded dynamically. This template will be cloned and inserted filled with data from json-server -->
                         <li class="carousel-tile-reviews">
@@ -393,8 +393,8 @@
                 </ul>
             </div>
             <div class="carousel-controls" id="reviews-carousel-controls">
-                <button id="reviews-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left"></button>
-                <button id="reviews-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right"></button>
+                <button id="reviews-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left" data-carousel-btn-l></button>
+                <button id="reviews-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right" data-carousel-btn-r></button>
             </div>
         </section>
     </main>
@@ -425,6 +425,7 @@
             </a>
         </div>
     </footer>
+    <script type="module" src="/js/main.js"></script>
 </body>
 
 </html>
