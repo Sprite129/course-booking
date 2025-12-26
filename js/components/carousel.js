@@ -1,3 +1,5 @@
+import touchHandler from "./touchHandler.js";
+
 export default class Carousel {
 
     constructor(carouselContainer, carouselTrack, nextButton, prevButton, useGap = false) {
@@ -18,8 +20,13 @@ export default class Carousel {
         this.pageCounter = 0;
         this.maxPage = Math.floor(this.track.scrollWidth / this.container.clientWidth) - 1;
 
-        this.nextBtn.addEventListener("click", () => this.next());
-        this.prevBtn.addEventListener("click", () => this.prev());
+        if (this.nextBtn != null && this.prevBtn != null) {
+            this.useButtons();
+        }
+        else {
+            this.useTouch();
+            this.touchAction = 0;
+        }
     }
 
     next() {
@@ -40,5 +47,20 @@ export default class Carousel {
 
     updatePosition() {
         this.track.style.transform = `translateX(${-this.pageCounter * (this.container.clientWidth + this.gap - (this.padding * 2))}px)`;
+    }
+
+    useButtons() {
+        this.nextBtn.addEventListener("click", () => this.next());
+        this.prevBtn.addEventListener("click", () => this.prev());
+    }
+
+    useTouch() {
+        touchHandler(this.container, (diff) => {
+            if(diff == 1)
+                this.prev();
+
+            if(diff == -1)
+                this.next();
+        });
     }
 }
