@@ -20,13 +20,8 @@ export default class Carousel {
         this.pageCounter = 0;
         this.maxPage = Math.floor(this.track.scrollWidth / this.container.clientWidth) - 1;
 
-        if (this.nextBtn != null && this.prevBtn != null) {
-            this.useButtons();
-        }
-        else {
-            this.useTouch();
-            this.touchAction = 0;
-        }
+        this.useButtons();
+        this.useTouch();
     }
 
     next() {
