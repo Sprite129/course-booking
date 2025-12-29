@@ -365,8 +365,12 @@ hr {
     transform: scale(0.9);
 }
 
-.calendar-card label:nth-child(4) {
+.calendar-card label {
     margin-top: 10%;
+}
+
+.calendar-card label:nth-child(2) {
+    margin-top: 0;
 }
 
 .calendar-card select {

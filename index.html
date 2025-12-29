@@ -23,36 +23,36 @@
     <header>
         <!-- Menu in nav will be displayed via JavaScript on a mobile version -->
         <nav class="mobile-menu">
-                <!-- At first I wanted to use SVGs as a tag to change their fill color, but decided to use multiple pictures instead -->
-                <button id="close-nav" aria-label="Close navigation menu"></button>
+            <!-- At first I wanted to use SVGs as a tag to change their fill color, but decided to use multiple pictures instead -->
+            <button id="close-nav" aria-label="Close navigation menu"></button>
+            <ul class="list-wrap">
+                <li>
+                    <a href="#our-courses">about us</a>
+                </li>
+                <li>
+                    <a href="#booking">booking</a>
+                </li>
+                <li>
+                    <a href="#reviews">reviews</a>
+                </li>
+                <li>
+                    <a href="#contacts">contacts</a>
+                </li>
+            </ul>
+            <div class="social-media-mobile">
                 <ul class="list-wrap">
                     <li>
-                        <a href="#our-courses">about us</a>
+                        <a class="facebook-logo" href="https://www.facebook.com/" aria-label="Facebook"></a>
                     </li>
                     <li>
-                        <a href="#booking">booking</a>
+                        <a class="insta-logo" href="https://www.instagram.com/" aria-label="Instagram"></a>
                     </li>
                     <li>
-                        <a href="#reviews">reviews</a>
-                    </li>
-                    <li>
-                        <a href="#contacts">contacts</a>
+                        <a class="tiktok-logo" href="https://www.tiktok.com/" aria-label="TikTok"></a>
                     </li>
                 </ul>
-                <div class="social-media-mobile">
-                    <ul class="list-wrap">
-                        <li>
-                            <a class="facebook-logo" href="https://www.facebook.com/" aria-label="Facebook"></a>
-                        </li>
-                        <li>
-                            <a class="insta-logo" href="https://www.instagram.com/" aria-label="Instagram"></a>
-                        </li>
-                        <li>
-                            <a class="tiktok-logo" href="https://www.tiktok.com/" aria-label="TikTok"></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            </div>
+        </nav>
         <div class="sticky-header">
             <!-- PC components are hidden for now, as I design with mobile-first approach -->
             <nav class="pc-menu">
@@ -129,8 +129,10 @@
             </div>
             <!-- Controls are out of carousel container to avoid moving them with track -->
             <div class="main-carousel-controls">
-                <button id="main-carousel-button-l" aria-label="Scroll carousel to the left" data-carousel-btn-l></button>
-                <button id="main-carousel-button-r" aria-label="Scroll carousel to the right" data-carousel-btn-r></button>
+                <button id="main-carousel-button-l" aria-label="Scroll carousel to the left"
+                    data-carousel-btn-l></button>
+                <button id="main-carousel-button-r" aria-label="Scroll carousel to the right"
+                    data-carousel-btn-r></button>
             </div>
         </section>
         <section id="course-options">
@@ -184,8 +186,10 @@
                 </ul>
             </div>
             <div class="carousel-controls" id="course-option-carousel-controls">
-                <button id="courses-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left" data-carousel-btn-l></button>
-                <button id="courses-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right" data-carousel-btn-r></button>
+                <button id="courses-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left"
+                    data-carousel-btn-l></button>
+                <button id="courses-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right"
+                    data-carousel-btn-r></button>
             </div>
         </section>
         <section id="booking">
@@ -211,24 +215,17 @@
                             <option value="robotics">Robotics</option>
                             <option value="data-science">Data Science</option>
                         </select>
-                    </div>
-                    <div class="calendar-card">
-                        <button class="calendar-card-close" aria-label="Remove the appointment"></button>
-                        <label for="day-default">Day</label>
-                        <select name="day" id="day-default">
-                            <option value="" selected disabled>Day of the week</option>
-                            <option value="monday">Monday</option>
-                            <option value="tuesday">Tuesday</option>
-                            <option value="wednesday">Wednesday</option>
-                            <option value="thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                        </select>
-                        <label for="course-default">Course</label>
-                        <select name="course" id="course-default">
-                            <option value="" selected disabled>Select course</option>
-                            <option value="programming">Programming</option>
-                            <option value="robotics">Robotics</option>
-                            <option value="data-science">Data Science</option>
+                        <label>Time</label>
+                        <select name="time" id="time-default">
+                            <option value="" selected disabled>Select time</option>
+                            <option value="9">09:00</option>
+                            <option value="10" disabled>10:00</option>
+                            <option value="11">11:00</option>
+                            <option value="12">12:00</option>
+                            <option value="13" disabled>13:00</option>
+                            <option value="14">14:00</option>
+                            <option value="15" disabled>15:00</option>
+                            <option value="16">16:00</option>
                         </select>
                     </div>
                     <div class="calendar-card">
@@ -249,24 +246,17 @@
                             <option value="robotics">Robotics</option>
                             <option value="data-science">Data Science</option>
                         </select>
-                    </div>
-                    <div class="calendar-card">
-                        <button class="calendar-card-close" aria-label="Remove the appointment"></button>
-                        <label for="day-default">Day</label>
-                        <select name="day" id="day-default">
-                            <option value="" selected disabled>Day of the week</option>
-                            <option value="monday">Monday</option>
-                            <option value="tuesday">Tuesday</option>
-                            <option value="wednesday">Wednesday</option>
-                            <option value="thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                        </select>
-                        <label for="course-default">Course</label>
-                        <select name="course" id="course-default">
-                            <option value="" selected disabled>Select course</option>
-                            <option value="programming">Programming</option>
-                            <option value="robotics">Robotics</option>
-                            <option value="data-science">Data Science</option>
+                        <label for="time" id="time-default">Time</label>
+                        <select name="time" id="time-default">
+                            <option value="" selected disabled>Select time</option>
+                            <option value="9">09:00</option>
+                            <option value="10" disabled>10:00</option>
+                            <option value="11">11:00</option>
+                            <option value="12">12:00</option>
+                            <option value="13" disabled>13:00</option>
+                            <option value="14">14:00</option>
+                            <option value="15" disabled>15:00</option>
+                            <option value="16">16:00</option>
                         </select>
                     </div>
                     <div class="calendar-card">
@@ -286,6 +276,80 @@
                             <option value="programming">Programming</option>
                             <option value="robotics">Robotics</option>
                             <option value="data-science">Data Science</option>
+                        </select>
+                        <label for="time" id="time-default">Time</label>
+                        <select name="time" id="time-default">
+                            <option value="" selected disabled>Select time</option>
+                            <option value="9">09:00</option>
+                            <option value="10" disabled>10:00</option>
+                            <option value="11">11:00</option>
+                            <option value="12">12:00</option>
+                            <option value="13" disabled>13:00</option>
+                            <option value="14">14:00</option>
+                            <option value="15" disabled>15:00</option>
+                            <option value="16">16:00</option>
+                        </select>
+                    </div>
+                    <div class="calendar-card">
+                        <button class="calendar-card-close" aria-label="Remove the appointment"></button>
+                        <label for="day-default">Day</label>
+                        <select name="day" id="day-default">
+                            <option value="" selected disabled>Day of the week</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                        </select>
+                        <label for="course-default">Course</label>
+                        <select name="course" id="course-default">
+                            <option value="" selected disabled>Select course</option>
+                            <option value="programming">Programming</option>
+                            <option value="robotics">Robotics</option>
+                            <option value="data-science">Data Science</option>
+                        </select>
+                        <label for="time" id="time-default">Time</label>
+                        <select name="time" id="time-default">
+                            <option value="" selected disabled>Select time</option>
+                            <option value="9">09:00</option>
+                            <option value="10" disabled>10:00</option>
+                            <option value="11">11:00</option>
+                            <option value="12">12:00</option>
+                            <option value="13" disabled>13:00</option>
+                            <option value="14">14:00</option>
+                            <option value="15" disabled>15:00</option>
+                            <option value="16">16:00</option>
+                        </select>
+                    </div>
+                    <div class="calendar-card">
+                        <button class="calendar-card-close" aria-label="Remove the appointment"></button>
+                        <label for="day-default">Day</label>
+                        <select name="day" id="day-default">
+                            <option value="" selected disabled>Day of the week</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                        </select>
+                        <label for="course-default">Course</label>
+                        <select name="course" id="course-default">
+                            <option value="" selected disabled>Select course</option>
+                            <option value="programming">Programming</option>
+                            <option value="robotics">Robotics</option>
+                            <option value="data-science">Data Science</option>
+                        </select>
+                        <label for="time" id="time-default">Time</label>
+                        <select name="time" id="time-default">
+                            <option value="" selected disabled>Select time</option>
+                            <option value="9">09:00</option>
+                            <option value="10" disabled>10:00</option>
+                            <option value="11">11:00</option>
+                            <option value="12">12:00</option>
+                            <option value="13" disabled>13:00</option>
+                            <option value="14">14:00</option>
+                            <option value="15" disabled>15:00</option>
+                            <option value="16">16:00</option>
                         </select>
                     </div>
                     <button class="calendar-add-card" aria-label="Add new appointment"></button>
@@ -310,6 +374,18 @@
                                 <option value="robotics">Robotics</option>
                                 <option value="data-science">Data Science</option>
                             </select>
+                            <label for="time" id="time-default">Time</label>
+                            <select name="time" id="time-default">
+                                <option value="" selected disabled>Select time</option>
+                                <option value="9">09:00</option>
+                                <option value="10" disabled>10:00</option>
+                                <option value="11">11:00</option>
+                                <option value="12">12:00</option>
+                                <option value="13" disabled>13:00</option>
+                                <option value="14">14:00</option>
+                                <option value="15" disabled>15:00</option>
+                                <option value="16">16:00</option>
+                            </select>
                         </div>
                     </template>
                 </div>
@@ -325,46 +401,41 @@
                         <!-- Reviews will be loaded dynamically. This template will be cloned and inserted filled with data from json-server -->
                         <li class="carousel-tile-reviews">
                             <article>
-                            <header>
-                                <div class="review-header-flex">
-                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
-                                    <h3 class="user-name">No data</h3>
-                                </div>
-                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
-                            </header>
-                            <p class="review-text">No data</p>
-                        </article>
+                                <header>
+                                    <div class="review-header-flex">
+                                        <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer"
+                                            class="review-icon">
+                                        <h3 class="user-name">No data</h3>
+                                    </div>
+                                    <div class="rating" aria-label="Rating 5/5">★★★★★</div>
+                                </header>
+                                <p class="review-text">No data</p>
+                            </article>
                         </li>
                     </template>
                     <li class="carousel-container-courses carousel-tile-reviews">
-                         <article>
+                        <article>
                             <header>
                                 <div class="review-header-flex">
-                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer"
+                                        class="review-icon">
                                     <h3 class="user-name">No data</h3>
                                 </div>
                                 <div class="rating" aria-label="Rating 5/5">★★★★★</div>
                             </header>
-                            <p class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non asperiores blanditiis vero, dolorum aliquam doloremque, voluptatem tempore velit consequuntur et nostrum nisi. Dolor consequuntur iure saepe et eius eveniet dolores laboriosam laudantium accusamus commodi architecto porro, rerum asperiores nostrum ea facilis voluptatem dicta cupiditate, officia assumenda est qui nesciunt esse?</p>
+                            <p class="review-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                                asperiores blanditiis vero, dolorum aliquam doloremque, voluptatem tempore velit
+                                consequuntur et nostrum nisi. Dolor consequuntur iure saepe et eius eveniet dolores
+                                laboriosam laudantium accusamus commodi architecto porro, rerum asperiores nostrum ea
+                                facilis voluptatem dicta cupiditate, officia assumenda est qui nesciunt esse?</p>
                         </article>
                     </li>
                     <li class="carousel-container-courses carousel-tile-reviews">
-                         <article>
+                        <article>
                             <header>
                                 <div class="review-header-flex">
-                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
-                                    <h3 class="user-name">No data</h3>
-                                </div>
-                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
-                            </header>
-                            <p class="review-text">No data</p>
-                        </article>
-                    </li>
-                    <li class="carousel-container-courses carousel-tile-reviews">
-                         <article>
-                            <header>
-                                <div class="review-header-flex">
-                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer"
+                                        class="review-icon">
                                     <h3 class="user-name">No data</h3>
                                 </div>
                                 <div class="rating" aria-label="Rating 5/5">★★★★★</div>
@@ -373,12 +444,26 @@
                         </article>
                     </li>
                     <li class="carousel-container-courses carousel-tile-reviews">
-                    </li>
-                    <li class="carousel-container-courses carousel-tile-reviews">
-                         <article>
+                        <article>
                             <header>
                                 <div class="review-header-flex">
-                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer" class="review-icon">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer"
+                                        class="review-icon">
+                                    <h3 class="user-name">No data</h3>
+                                </div>
+                                <div class="rating" aria-label="Rating 5/5">★★★★★</div>
+                            </header>
+                            <p class="review-text">No data</p>
+                        </article>
+                    </li>
+                    <li class="carousel-container-courses carousel-tile-reviews">
+                    </li>
+                    <li class="carousel-container-courses carousel-tile-reviews">
+                        <article>
+                            <header>
+                                <div class="review-header-flex">
+                                    <img src="../assets/logos/contact.svg" alt="Profile picture of the reviewer"
+                                        class="review-icon">
                                     <h3 class="user-name">No data</h3>
                                 </div>
                                 <div class="rating" aria-label="Rating 5/5">★★★★★</div>
@@ -391,8 +476,10 @@
                 </ul>
             </div>
             <div class="carousel-controls" id="reviews-carousel-controls">
-                <button id="reviews-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left" data-carousel-btn-l></button>
-                <button id="reviews-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right" data-carousel-btn-r></button>
+                <button id="reviews-btn-l" class="carousel-button-l" aria-label="Scroll carousel to the left"
+                    data-carousel-btn-l></button>
+                <button id="reviews-btn-r" class="carousel-button-r" aria-label="Scroll carousel to the right"
+                    data-carousel-btn-r></button>
             </div>
         </section>
     </main>
