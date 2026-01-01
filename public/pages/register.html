@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/register.css">
+    <!-- Title font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Regular text font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Calendar: course booking</title>
+</head>
+
+<body>
+    <nav>
+        <a href="./index.html" aria-label="Return to the main site"></a>
+    </nav>
+    <main>
+        <h1>Confirm your appointments</h1>
+        <ul class="booked-courses">
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <li>
+                <div class="list-item-container">
+                    <p class="info">Example</p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+            </li>
+            <!-- This list will be filled dynamically with courses booked by user. -->
+            <template id="booked-item">
+                <li>
+                    <div class="list-item-container">
+                    <p class="info"></p>
+                    <button class="remove-item" aria-label="Remove the appointment"></button>
+                </div>
+                </li>
+            </template>
+        </ul>
+        <form>
+            <div class="form-item">
+                <label for="phone-input">Phone number</label>
+                <input type="tel" name="phone" id="phone-input">
+            </div>
+            <div class="form-item">
+                <label for="email-input">Email</label>
+                <input type="email" name="email" id="email-input">
+            </div>
+            <input type="submit" value="CONFIRM">
+            <!-- For now I will be building this project without authorization. May add it in the future  -->
+        </form>
+    </main>
+    <footer>
+        <img src="./assets/logos/logo.svg" alt="Website logo">
+    </footer>
+</body>
+
+</html>
