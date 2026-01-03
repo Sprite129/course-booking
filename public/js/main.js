@@ -1,6 +1,7 @@
 import Carousel from "./components/carousel.js"
 import Menu from "./components/mobileMenu.js";
 import mouseDragger from "./components/calendarDragPC.js";
+import BookingController from "./components/bookingController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -21,4 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const calendar = document.querySelector(".calendar-flex");
     new mouseDragger(calendar);
+
+    const appointmentsContainer = document.querySelector(".calendar-flex");
+    const addNewAppointment = appointmentsContainer.querySelector(".calendar-add-card");
+    const appointmentTemplate = appointmentsContainer.querySelector("#calendar-card-template");
+
+    const bookingController = new BookingController(appointmentsContainer, addNewAppointment, appointmentTemplate, "calendar-card-close");
+    bookingController.init();
 })
