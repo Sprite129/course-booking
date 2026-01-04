@@ -4,8 +4,15 @@ export default class scheduleAPI {
         this.coursesUrl = coursesEndpoint;
     }
 
-    async getSchedule() {
-        const response = await fetch(this.url);
+    async getSchedule(courseID, courseDay) {
+        let urlDetailed = this.url;
+
+        if(courseID)
+            urlDetailed += "?courseId=" + courseID;
+        if(courseDay)
+            urlDetailed += "&day=" + courseDay;
+
+        const response = await fetch(urlDetailed);
 
         if (!response.ok)
             throw new Error(response.status);

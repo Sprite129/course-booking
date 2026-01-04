@@ -14,11 +14,11 @@ export default class BookingController {
             this.selectNames.push(elem.name);
         });
 
+        this.api = new scheduleAPI("http://localhost:5000/schedule", "http://localhost:5000/courses");
         this.appointmentMaker = new AppointmentMaker(this.template, this.container, this.selectNames, this.newBtn);
-        this.api = new scheduleAPI("http://localhost:5000/schedule");
     }
 
-    async init() {
+    init() {
         this.newBtn.addEventListener("click", (e) => {
             e.preventDefault();
             this.appointmentMaker.createAppointment();
@@ -37,6 +37,8 @@ export default class BookingController {
                 this.updateScroll();
             }
         })
+
+        this.loadData();
     }
 
     checkForScroll() {
@@ -56,6 +58,33 @@ export default class BookingController {
         if (this.checkForScroll() && isScrollUp) {
             this.container.scrollLeft += this.newBtn.clientWidth;
         }
+    }
+
+    async loadData() {
+        // try {
+        //     let courses = await this.api.getCourses();
+        //     console.log(courses);
+        // }
+        // catch(err) {
+        //     console.error(err.message);
+        // }
+
+        // try {
+        //     let days = await this.api.getSchedule("1");
+        //     console.log(days);
+        // }
+        // catch (err) {
+        //     console.log(err.message);
+        // }
+
+        // try {
+        //     let hours = await this.api.getSchedule("1", "Wednesday");
+        //     console.log(hours);
+        // }
+        // catch (err) {
+        //     console.log(err.message);
+        // }
+
     }
 
 }
