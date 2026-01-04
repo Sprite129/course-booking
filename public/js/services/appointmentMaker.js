@@ -1,18 +1,19 @@
 export default class AppointmentMaker {
-    constructor(template, parent, defaultNames) {
+    constructor(template, parent, defaultNames, addButton) {
         this.template = template;
         this.parent = parent;
         this.names = defaultNames;
+        this.btn = addButton;
 
         this.gap = getComputedStyle(this.parent).gap;
 
-        if(this.parent.children.length > 2)
+        if (this.parent.children.length > 2)
             this.counter = this.recoverCounter();
         else
             this.counter = 0;
     }
 
-    createAppointment(isContainerScroll) {
+    createAppointment() {
         const newAppointment = this.template.content.cloneNode(true);
 
         newAppointment.querySelectorAll("select").forEach((elem, i) => {
@@ -29,23 +30,16 @@ export default class AppointmentMaker {
             elem.setAttribute("for", newID);
         });
 
-        this.parent.prepend(newAppointment);
-
-        if(isContainerScroll) {
-            this.parent.scrollRight += newAppointment.clientWidth + this.gap;
-
-        }
+        this.btn.before(newAppointment);
 
         this.counter++;
     }
 
     recoverCounter() {
-        const firstAppointment = this.parent.children[0];
-        
-        const id = firstAppointment.querySelector("select").id;
-        const oldCounter = +id[id.length - 1] + 1;
+        const lastAppointment = this.btn.previousElementSibling;
+        const lastAppointmentID = lastAppointment.querySelector("select").id;
 
-        console.log(oldCounter);
+        const oldCounter = +lastAppointmentID.match(/\d+\.?\d*/g) + 1;
         return oldCounter;
     }
 }

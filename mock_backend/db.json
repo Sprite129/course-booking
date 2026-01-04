@@ -1,22 +1,28 @@
 {
+  "courses": [
+    { "id": 1, "name": "Programming" },
+    { "id": 2, "name": "Design" },
+    { "id": 3, "name": "Marketing" }
+  ],
+
   "schedule": [
-    { "id": 1, "course": "Programming", "day": "Monday", "hour": "10:00", "isAvailable": true },
-    { "id": 2, "course": "Programming", "day": "Monday", "hour": "12:00", "isAvailable": false },
-    { "id": 3, "course": "Programming", "day": "Monday", "hour": "14:00", "isAvailable": true },
+    { "id": 1, "courseId": 1, "day": "Monday", "hour": "10:00", "isAvailable": true },
+    { "id": 2, "courseId": 1, "day": "Monday", "hour": "12:00", "isAvailable": false },
+    { "id": 3, "courseId": 1, "day": "Monday", "hour": "14:00", "isAvailable": true },
 
-    { "id": 4, "course": "Programming", "day": "Wednesday", "hour": "10:00", "isAvailable": true },
-    { "id": 5, "course": "Programming", "day": "Wednesday", "hour": "12:00", "isAvailable": true },
-    { "id": 6, "course": "Programming", "day": "Wednesday", "hour": "16:00", "isAvailable": false },
+    { "id": 4, "courseId": 1, "day": "Wednesday", "hour": "10:00", "isAvailable": true },
+    { "id": 5, "courseId": 1, "day": "Wednesday", "hour": "12:00", "isAvailable": true },
+    { "id": 6, "courseId": 1, "day": "Wednesday", "hour": "16:00", "isAvailable": false },
 
-    { "id": 7, "course": "Design", "day": "Tuesday", "hour": "11:00", "isAvailable": true },
-    { "id": 8, "course": "Design", "day": "Tuesday", "hour": "13:00", "isAvailable": true },
-    { "id": 9, "course": "Design", "day": "Tuesday", "hour": "15:00", "isAvailable": false },
+    { "id": 7, "courseId": 2, "day": "Tuesday", "hour": "11:00", "isAvailable": true },
+    { "id": 8, "courseId": 2, "day": "Tuesday", "hour": "13:00", "isAvailable": true },
+    { "id": 9, "courseId": 2, "day": "Tuesday", "hour": "15:00", "isAvailable": false },
 
-    { "id": 10, "course": "Design", "day": "Thursday", "hour": "10:00", "isAvailable": true },
-    { "id": 11, "course": "Design", "day": "Thursday", "hour": "14:00", "isAvailable": true },
+    { "id": 10, "courseId": 2, "day": "Thursday", "hour": "10:00", "isAvailable": true },
+    { "id": 11, "courseId": 2, "day": "Thursday", "hour": "14:00", "isAvailable": true },
 
-    { "id": 12, "course": "Marketing", "day": "Friday", "hour": "09:00", "isAvailable": true },
-    { "id": 13, "course": "Marketing", "day": "Friday", "hour": "11:00", "isAvailable": false },
-    { "id": 14, "course": "Marketing", "day": "Friday", "hour": "13:00", "isAvailable": true }
+    { "id": 12, "courseId": 3, "day": "Friday", "hour": "09:00", "isAvailable": true },
+    { "id": 13, "courseId": 3, "day": "Friday", "hour": "11:00", "isAvailable": false },
+    { "id": 14, "courseId": 3, "day": "Friday", "hour": "13:00", "isAvailable": true }
   ]
 }
