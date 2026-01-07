@@ -57,7 +57,7 @@ export default class BookingController {
         event.preventDefault();
 
         let newAppointment = this.appointmentMaker.createAppointment();
-        let newAppointmentEntity = new Appointment(newAppointment, this.api);
+        let newAppointmentEntity = new Appointment(newAppointment, this.api, ["1", "Wednesday", ""]);
 
         this.appointmentsMap.set(newAppointment.id, newAppointmentEntity);
         this.updateScroll(true);

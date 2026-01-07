@@ -1,9 +1,19 @@
 export default class Appointment {
-    constructor(AppointmentCard, api) {
+    constructor(AppointmentCard, api, previousSelectedValues) {
         this.card = AppointmentCard;
         this.api = api;
+        this.actualVals = [];
         this.selectElements = Array.from(this.card.querySelectorAll("select"));
-        this.updateSelect();
+        this.recoveredVals = previousSelectedValues || [];
+
+        this.init();
+    }
+
+    async init() {
+        await this.updateSelect();
+        if(this.recoveredVals.length) {
+            await this.recoverSelected();
+        }
     }
 
     async updateSelect(target) {
@@ -26,12 +36,13 @@ export default class Appointment {
                 finally {
                     this.fillWithOptions(this.selectElements[updateIndex], courses);
                 }
+
                 break;
 
             case 0:
                 let days;
                 updateIndex++;
-                
+
                 const lastSelect = this.selectElements[this.selectElements.length - 1];
                 this.clearOptions(lastSelect);
                 this.addPlaceholder(lastSelect, this.getSelectType(lastSelect));
@@ -66,7 +77,11 @@ export default class Appointment {
 
             default:
                 break;
+
         }
+
+        this.saveVals();
+        console.log(this.actualVals);
     }
 
     fillWithOptions(select, data) {
@@ -135,7 +150,7 @@ export default class Appointment {
         let newOption = document.createElement("option");
         newOption.value = "";
         newOption.textContent = "Loading...";
-        newOption.selected;
+        newOption.selected = true;
 
         this.clearOptions(select);
         select.append(newOption);
@@ -148,5 +163,36 @@ export default class Appointment {
         placeholder.selected = "true";
 
         select.prepend(placeholder);
+    }
+
+    saveVals() {
+        this.selectElements.forEach((elem, i) => {
+            if (elem.value.includes("Select"))
+                this.actualVals[i] = '';
+            else
+                this.actualVals[i] = elem.value;
+        })
+    }
+
+    async recoverSelected() {
+        for (let i = 0; i < this.selectElements.length - 2; i++) {
+            if (this.existsInOptions(this.selectElements[i], this.recoveredVals[i])) {
+                this.selectElements[i].value = this.recoveredVals[i];
+                await this.updateSelect(this.selectElements[i]);
+                continue;
+            }
+            break;
+        }
+
+        if(this.existsInOptions(this.selectElements[this.selectElements.length - 1], this.recoveredVals[this.recoveredVals.length - 1]))
+            this.selectElements[this.selectElements.length - 1].value = this.recoveredVals[this.recoveredVals.length - 1];
+    }
+
+    existsInOptions(select, savedOption) {
+        let selectOptionsArr = Array.from(select.children);
+        
+        return selectOptionsArr.some(elem => {
+            return elem.value == savedOption;
+        });
     }
 }
