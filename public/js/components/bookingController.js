@@ -1,3 +1,4 @@
+import Appointment from "../entities/appointmentEntity.js";
 import AppointmentMaker from "../services/appointmentMaker.js";
 import scheduleAPI from "../services/scheduleAPI.js";
 
@@ -7,6 +8,7 @@ export default class BookingController {
         this.newBtn = newAppointmentButton;
         this.template = appointmentTemplate;
         this.closeBtnClass = closeButtonClass;
+        this.appointmentsMap = new Map();
 
         this.selectNames = [];
 
@@ -20,25 +22,16 @@ export default class BookingController {
 
     init() {
         this.newBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            this.appointmentMaker.createAppointment();
-            this.updateScroll(true);
+            this.onNewAppointment(e);
         });
 
         this.container.addEventListener("change", (e) => {
-            console.log("Change in " + e.target.id);
+            this.onAppointmentChange(e);
         });
 
         this.container.addEventListener("click", (e) => {
-            const elem = e.target;
-
-            if (elem.classList.contains(this.closeBtnClass)) {
-                elem.parentElement.remove();
-                this.updateScroll();
-            }
+            this.onRemoveAppointment(e);
         })
-
-        this.loadData();
     }
 
     checkForScroll() {
@@ -60,31 +53,31 @@ export default class BookingController {
         }
     }
 
-    async loadData() {
-        // try {
-        //     let courses = await this.api.getCourses();
-        //     console.log(courses);
-        // }
-        // catch(err) {
-        //     console.error(err.message);
-        // }
+    onNewAppointment(event) {
+        event.preventDefault();
 
-        // try {
-        //     let days = await this.api.getSchedule("1");
-        //     console.log(days);
-        // }
-        // catch (err) {
-        //     console.log(err.message);
-        // }
+        let newAppointment = this.appointmentMaker.createAppointment();
+        let newAppointmentEntity = new Appointment(newAppointment, this.api);
 
-        // try {
-        //     let hours = await this.api.getSchedule("1", "Wednesday");
-        //     console.log(hours);
-        // }
-        // catch (err) {
-        //     console.log(err.message);
-        // }
-
+        this.appointmentsMap.set(newAppointment.id, newAppointmentEntity);
+        this.updateScroll(true);
     }
 
+    onAppointmentChange(event) {
+        let appointmentCard = event.target.parentElement;
+        let appointmentEntity = this.appointmentsMap.get(appointmentCard.id);
+
+        appointmentEntity.updateSelect(event.target);
+    }
+
+    onRemoveAppointment(event) {
+        const elem = event.target;
+
+        if (elem.classList.contains(this.closeBtnClass)) {
+            this.appointmentsMap.delete(elem.parentElement.id);
+
+            elem.parentElement.remove();
+            this.updateScroll();
+        }
+    }
 }

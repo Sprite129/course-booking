@@ -15,6 +15,7 @@ export default class AppointmentMaker {
 
     createAppointment() {
         const newAppointment = this.template.content.cloneNode(true);
+        const appointmentCardNewID = "appointment-card-" + this.counter;
 
         newAppointment.querySelectorAll("select").forEach((elem, i) => {
             const newName = this.names[i] + "-" + this.counter;
@@ -32,7 +33,12 @@ export default class AppointmentMaker {
 
         this.btn.before(newAppointment);
 
+        const appointmentInDOM = this.btn.previousElementSibling;
+        appointmentInDOM.id = appointmentCardNewID;
+        
         this.counter++;
+
+        return appointmentInDOM;
     }
 
     recoverCounter() {

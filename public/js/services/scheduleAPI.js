@@ -18,7 +18,14 @@ export default class scheduleAPI {
             throw new Error(response.status);
 
         const data = await response.json();
-        return data;
+        let result = data;
+
+        // Getting needed elements on client side because json-server only allows limited queries
+        if(courseID && !courseDay)
+            result = this.getDistinctDays(data);
+        
+        return result;
+            
     }
 
     async getCourses() {
@@ -29,5 +36,17 @@ export default class scheduleAPI {
 
         const data = await response.json();
         return data;
+    }
+
+    getDistinctDays(scheduleDays) {
+        let uniqueDays = [];
+
+        scheduleDays.forEach(elem => {
+            const day = elem.day;
+            if(uniqueDays.indexOf(day) == -1)
+                uniqueDays.push(day);
+        });
+
+        return uniqueDays;
     }
 }

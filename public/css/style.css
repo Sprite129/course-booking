@@ -3,9 +3,9 @@
     --secondary-color: #001626;
     --main-lighter: #FFD0AE;
     --secondary-lighter: #003E6B;
+    --unavailable: #ff1717;
 
     /* used utopia.fyi type scale tool */
-    /* Updated sizes to fit in 320px width mobile */
     --font-size--2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
     --font-size--1: clamp(0.7292rem, 0.635rem + 0.471vw, 1rem);
     --font-size-0: clamp(0.875rem, 0.7446rem + 0.6522vw, 1.25rem);
@@ -210,9 +210,6 @@ body>header {
     display: flex;
     flex-wrap: nowrap;
     position: relative;
-    /* right: 100%; */
-    /* right: 200%; */
-    /* Slide positions */
     width: 300%;
     height: calc(100% - 20px);
     padding: 10px 0;
@@ -376,6 +373,10 @@ hr {
 .calendar-card select {
     font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: var(--font-size-0);
+}
+
+.calendar-option-unavailable {
+    color: var(--unavailable);
 }
 
 .calendar-card select:last-child {
@@ -842,6 +843,7 @@ a.facebook-logo {
         height: min(50vh, 500px);
         background-size: 20% auto;
         justify-self: center;
+        align-self: center;
     }
 }
 

@@ -18,7 +18,7 @@ export default class Carousel {
         }
 
         this.pageCounter = 0;
-        this.maxPage = Math.floor(this.track.scrollWidth / this.container.clientWidth) - 1;
+        this.maxPage = Math.round(this.track.scrollWidth / this.container.clientWidth) - 1;
 
         this.useButtons();
         this.useTouch();
