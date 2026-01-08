@@ -1,5 +1,6 @@
 import Appointment from "../entities/appointmentEntity.js";
 import AppointmentMaker from "../services/appointmentMaker.js";
+import appointmentsCacher from "../services/appointmentsCache.js";
 import scheduleAPI from "../services/scheduleAPI.js";
 
 export default class BookingController {
@@ -18,15 +19,19 @@ export default class BookingController {
 
         this.api = new scheduleAPI("http://localhost:5000/schedule", "http://localhost:5000/courses");
         this.appointmentMaker = new AppointmentMaker(this.template, this.container, this.selectNames, this.newBtn);
+        this.cacheMangaer = new appointmentsCacher("appointments", 700);
     }
 
     init() {
+        this.recoverAppointments();
+
         this.newBtn.addEventListener("click", (e) => {
             this.onNewAppointment(e);
         });
 
         this.container.addEventListener("change", (e) => {
             this.onAppointmentChange(e);
+            this.saveAppointments();
         });
 
         this.container.addEventListener("click", (e) => {
@@ -53,11 +58,12 @@ export default class BookingController {
         }
     }
 
-    onNewAppointment(event) {
-        event.preventDefault();
+    onNewAppointment(event, restoredAppointment) {
+        if(event)
+            event.preventDefault();
 
         let newAppointment = this.appointmentMaker.createAppointment();
-        let newAppointmentEntity = new Appointment(newAppointment, this.api, ["1", "Wednesday", ""]);
+        let newAppointmentEntity = restoredAppointment ? new Appointment(newAppointment, this.api, restoredAppointment) : new Appointment(newAppointment, this.api);
 
         this.appointmentsMap.set(newAppointment.id, newAppointmentEntity);
         this.updateScroll(true);
@@ -72,12 +78,35 @@ export default class BookingController {
 
     onRemoveAppointment(event) {
         const elem = event.target;
-
+        
         if (elem.classList.contains(this.closeBtnClass)) {
             this.appointmentsMap.delete(elem.parentElement.id);
 
             elem.parentElement.remove();
             this.updateScroll();
+
+            this.saveAppointments();
         }
+    }
+
+    saveAppointments() {
+        let data = new Map();
+
+        this.appointmentsMap.forEach((appointment, key) => {
+            data.set(key, appointment.actualVals);
+        })
+
+        this.cacheMangaer.debounceSave([...data]);
+    }
+
+    recoverAppointments() {
+        let restoredAppointmentsMap = this.cacheMangaer.load();
+
+        if(!restoredAppointmentsMap.size)
+            return;
+
+        restoredAppointmentsMap.forEach(appointment => {
+            this.onNewAppointment(null, appointment);
+        });
     }
 }

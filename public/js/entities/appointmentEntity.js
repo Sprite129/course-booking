@@ -175,7 +175,7 @@ export default class Appointment {
     }
 
     async recoverSelected() {
-        for (let i = 0; i < this.selectElements.length - 2; i++) {
+        for (let i = 0; i < this.selectElements.length; i++) {
             if (this.existsInOptions(this.selectElements[i], this.recoveredVals[i])) {
                 this.selectElements[i].value = this.recoveredVals[i];
                 await this.updateSelect(this.selectElements[i]);
@@ -183,9 +183,6 @@ export default class Appointment {
             }
             break;
         }
-
-        if(this.existsInOptions(this.selectElements[this.selectElements.length - 1], this.recoveredVals[this.recoveredVals.length - 1]))
-            this.selectElements[this.selectElements.length - 1].value = this.recoveredVals[this.recoveredVals.length - 1];
     }
 
     existsInOptions(select, savedOption) {
