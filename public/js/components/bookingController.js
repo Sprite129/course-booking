@@ -1,6 +1,7 @@
 import Appointment from "../entities/appointmentEntity.js";
 import AppointmentMaker from "../services/appointmentMaker.js";
 import appointmentsCacher from "../services/appointmentsCache.js";
+import BookingValidator from "../services/bookingValidator.js";
 import scheduleAPI from "../services/scheduleAPI.js";
 
 export default class BookingController {
@@ -20,6 +21,7 @@ export default class BookingController {
         this.api = new scheduleAPI("http://localhost:5000/schedule", "http://localhost:5000/courses");
         this.appointmentMaker = new AppointmentMaker(this.template, this.container, this.selectNames, this.newBtn);
         this.cacheMangaer = new appointmentsCacher("appointments", 700);
+        this.validator = new BookingValidator();
     }
 
     init() {
@@ -105,7 +107,10 @@ export default class BookingController {
         if(!restoredAppointmentsMap.size)
             return;
 
-        restoredAppointmentsMap.forEach(appointment => {
+        let noDuplicatesMap = this.validator.removeDuplicates([...restoredAppointmentsMap]);
+        console.log(noDuplicatesMap);
+
+        noDuplicatesMap.forEach(appointment => {
             this.onNewAppointment(null, appointment);
         });
     }

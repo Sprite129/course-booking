@@ -81,7 +81,6 @@ export default class Appointment {
         }
 
         this.saveVals();
-        console.log(this.actualVals);
     }
 
     fillWithOptions(select, data) {
