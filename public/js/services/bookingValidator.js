@@ -1,20 +1,45 @@
 export default class BookingValidator {
-    constructor(api) {
+    constructor(api, dataChangeFlag) {
         if (api)
             this.api = api;
     }
 
-    removeDuplicates(data) {
-        let newData = data.filter((value, index, self) =>
-            index == self.findIndex((t) => (
-                this.isEqualArrays(t[1], value[1])
-            ))
-        )
-        
-        return new Map(newData);
+    removeDuplicatesAndEmpty(data) {
+        let newData = data.filter((value, index, self) => {
+            const current = value[1];
+            if (this.isEmptyArray(current))
+                return false;
+
+            if (!this.isFullArray(current))
+                return true;
+
+            return index === self.findIndex(t =>
+                this.isEqualArrays(t[1], current)
+            );
+        });
+
+        return newData;
     }
 
-    isEqualArrays(a, b) {
-        return a.length == b.length && a.every((elem, i) => elem == b[i]);
+    isEqualArrays(arrayA, arrayB) {
+        return arrayA.length == arrayB.length && arrayA.every((elem, i) => elem == arrayB[i]);
+    }
+
+    isEmptyArray(array) {
+        return this.emptyLinesCount(array) == array.length;
+    }
+
+    isFullArray(array) {
+        return this.emptyLinesCount(array) == 0;
+    }
+
+    emptyLinesCount(array) {
+        let emptyColumns = 0;
+        array.forEach(elem => {
+            if (elem == "")
+                emptyColumns++;
+        });
+
+        return emptyColumns;
     }
 }

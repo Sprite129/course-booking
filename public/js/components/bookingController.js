@@ -127,12 +127,13 @@ export default class BookingController {
     }
 
     recoverAppointments() {
-        let restoredAppointmentsMap = this.cacheMangaer.load();
+        const restoredAppointmentsMap = this.cacheMangaer.load();
 
         if (!restoredAppointmentsMap.size)
             return;
 
-        let noDuplicatesMap = this.validator.removeDuplicates([...restoredAppointmentsMap]);
+        const noDuplicates = this.validator.removeDuplicatesAndEmpty([...restoredAppointmentsMap]);
+        const noDuplicatesMap = new Map(noDuplicates);
 
         noDuplicatesMap.forEach(appointment => {
             this.onNewAppointment(null, appointment);
