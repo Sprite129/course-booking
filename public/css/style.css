@@ -4,6 +4,8 @@
     --main-lighter: #FFD0AE;
     --secondary-lighter: #003E6B;
     --unavailable: #ff1717;
+    --warning: #fa6666;
+    --warning-border: #ff1616;
 
     /* used utopia.fyi type scale tool */
     --font-size--2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
@@ -151,7 +153,7 @@ body>header {
     font-weight: 600;
 }
 
-.mobile-menu > .list-wrap li {
+.mobile-menu>.list-wrap li {
     margin-bottom: 3vh;
 }
 
@@ -320,6 +322,51 @@ hr {
     margin: 3vh 0 0 0;
 }
 
+.warning {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: min(100%, 600px);
+    aspect-ratio: 3;
+    font-size: var(--font-size-0);
+    position: fixed;
+    bottom: 5%;
+    justify-self: center;
+    align-content: center;
+    text-align: center;
+    background-color: var(--warning);
+    border-left: 5px solid var(--warning-border);
+    border-right: 5px solid var(--warning-border);
+    color: var(--secondary-color);
+    z-index: 2;
+    transform: translateY(300%);
+    opacity: 0;
+    transition: transform ease-in-out 1s, opacity ease-in-out 1s;
+}
+
+.warning p {
+    flex: 1 1 0;
+    align-content: center;
+}
+
+.confirmation {
+    z-index: 3;
+}
+
+.confirmation button:first-child {
+    display: block;
+    width: 7%;
+    aspect-ratio: 1;
+    margin-left: auto;
+    margin-right: 3%;
+    margin-top: 10px;
+}
+
+.confirmation button:last-child {
+    width: 50%;
+    margin: 0 auto 10px;
+}
+
 .calendar-flex {
     margin-top: 3vh;
     justify-items: center;
@@ -432,7 +479,7 @@ hr {
     height: auto;
 }
 
-.carousel-tile-reviews p{
+.carousel-tile-reviews p {
     display: -webkit-box;
     -webkit-line-clamp: 6;
     line-clamp: 6;
@@ -541,6 +588,20 @@ a.facebook-logo {
     .main-carousel-item:last-child {
         background-image: url(../assets/images/register-now-large.png);
     }
+
+    .warning {
+        aspect-ratio: 0;
+    }
+
+    .confirmation button:first-child {
+        margin-top: 15px;
+        width: 5%;
+    }
+
+    .confirmation button:last-child {
+        margin: 15px auto;
+        width: 30%;
+    }
 }
 
 /* tablet */
@@ -588,7 +649,7 @@ a.facebook-logo {
     #burger-menu {
         display: none;
     }
-    
+
     .mobile-menu {
         display: none;
     }
