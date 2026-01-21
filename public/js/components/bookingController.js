@@ -5,12 +5,17 @@ import BookingValidator from "../services/bookingValidator.js";
 import scheduleAPI from "../services/scheduleAPI.js";
 
 export default class BookingController {
-    constructor(bookingContainer, newAppointmentButton, appointmentTemplate, closeButtonClass) {
+    constructor(bookingContainer, newAppointmentButton, appointmentTemplate, closeButtonClass, warningMessageElement, confirmMessageElement) {
         this.container = bookingContainer;
         this.newBtn = newAppointmentButton;
         this.template = appointmentTemplate;
         this.closeBtnClass = closeButtonClass;
+
+        this.warningElement = warningMessageElement;
+        this.confirmElement = confirmMessageElement;
+
         this.appointmentsMap = new Map();
+        this.appointmentToDelete;
 
         this.selectNames = [];
 
@@ -37,7 +42,11 @@ export default class BookingController {
         });
 
         this.container.addEventListener("click", (e) => {
-            this.onRemoveAppointment(e);
+            this.onContainerClick(e);
+        })
+
+        this.confirmElement.addEventListener("click", (e) => {
+            this.onConfirmElemClick(e);
         })
     }
 
@@ -61,7 +70,7 @@ export default class BookingController {
     }
 
     onNewAppointment(event, restoredAppointment) {
-        if(event)
+        if (event)
             event.preventDefault();
 
         let newAppointment = this.appointmentMaker.createAppointment();
@@ -78,16 +87,32 @@ export default class BookingController {
         appointmentEntity.updateSelect(event.target);
     }
 
-    onRemoveAppointment(event) {
+    onContainerClick(event) {
+        event.preventDefault();
         const elem = event.target;
-        
-        if (elem.classList.contains(this.closeBtnClass)) {
-            this.appointmentsMap.delete(elem.parentElement.id);
 
-            elem.parentElement.remove();
-            this.updateScroll();
+        if (elem.classList.contains(this.closeBtnClass)) {
+            this.confirmElement.classList.add("message-visible");
+            this.appointmentToDelete = elem.parentElement;
+        }
+    }
+
+    onConfirmElemClick(event) {
+        event.preventDefault();
+
+        const elem = event.target;
+
+        if(elem.id == "close-confirmation-btn"){
+            this.confirmElement.classList.remove("message-visible");
+        }
+        
+        if(elem.id == "confirmation-btn") {
+            this.appointmentsMap.delete(this.appointmentToDelete.id);
+            this.appointmentToDelete.remove();
 
             this.saveAppointments();
+
+            this.confirmElement.classList.remove("message-visible");
         }
     }
 
@@ -104,11 +129,10 @@ export default class BookingController {
     recoverAppointments() {
         let restoredAppointmentsMap = this.cacheMangaer.load();
 
-        if(!restoredAppointmentsMap.size)
+        if (!restoredAppointmentsMap.size)
             return;
 
         let noDuplicatesMap = this.validator.removeDuplicates([...restoredAppointmentsMap]);
-        console.log(noDuplicatesMap);
 
         noDuplicatesMap.forEach(appointment => {
             this.onNewAppointment(null, appointment);

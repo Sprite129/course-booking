@@ -326,11 +326,11 @@ hr {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    width: min(100%, 600px);
+    width: min(100%, 500px);
     aspect-ratio: 3;
     font-size: var(--font-size-0);
     position: fixed;
-    bottom: 5%;
+    top: 0;
     justify-self: center;
     align-content: center;
     text-align: center;
@@ -339,9 +339,9 @@ hr {
     border-right: 5px solid var(--warning-border);
     color: var(--secondary-color);
     z-index: 2;
-    transform: translateY(300%);
+    transform: translateY(-300%);
     opacity: 0;
-    transition: transform ease-in-out 1s, opacity ease-in-out 1s;
+    transition: transform cubic-bezier(.42,-0.32,.58,1.32) 0.3s, opacity ease-in-out 0.3s;
 }
 
 .warning p {
@@ -353,6 +353,11 @@ hr {
     z-index: 3;
 }
 
+.message-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .confirmation button:first-child {
     display: block;
     width: 7%;
@@ -360,6 +365,12 @@ hr {
     margin-left: auto;
     margin-right: 3%;
     margin-top: 10px;
+    background: none;
+    border: none;
+    background-image: url("../assets/controls/cross.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .confirmation button:last-child {
@@ -590,6 +601,7 @@ a.facebook-logo {
     }
 
     .warning {
+        top: 12%;
         aspect-ratio: 0;
     }
 
@@ -600,7 +612,7 @@ a.facebook-logo {
 
     .confirmation button:last-child {
         margin: 15px auto;
-        width: 30%;
+        width: 25%;
     }
 }
 
@@ -831,6 +843,10 @@ a.facebook-logo {
         position-anchor: --course-option-anchor;
         justify-self: anchor-center;
         align-self: anchor-center;
+    }
+
+    .warning {
+        top: 10%;
     }
 
     #reviews-carousel {

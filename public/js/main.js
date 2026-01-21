@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const appointmentsContainer = document.querySelector(".calendar-flex");
     const addNewAppointment = appointmentsContainer.querySelector(".calendar-add-card");
     const appointmentTemplate = appointmentsContainer.querySelector("#calendar-card-template");
+    const warningMessageElement = document.querySelector("#warning-pop-up");
+    const confirmMessageElement = document.querySelector("#confirmation-pop-up");
 
-    const bookingController = new BookingController(appointmentsContainer, addNewAppointment, appointmentTemplate, "calendar-card-close");
+    const bookingController = new BookingController(appointmentsContainer, addNewAppointment, appointmentTemplate, "calendar-card-close", warningMessageElement, confirmMessageElement);
     bookingController.init();
 })
