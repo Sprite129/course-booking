@@ -1,13 +1,14 @@
 export default class AppointmentMaker {
-    constructor(template, parent, defaultNames, addButton) {
+    constructor(template, parent, defaultNames, addButton, childrenDefaultCount) {
         this.template = template;
         this.parent = parent;
         this.names = defaultNames;
         this.btn = addButton;
+        this.defaultChildCount = childrenDefaultCount ? childrenDefaultCount : 0;
 
         this.gap = getComputedStyle(this.parent).gap;
-
-        if (this.parent.children.length > 2)
+        
+        if (this.parent.children.length > this.defaultChildCount)
             this.counter = this.recoverCounter();
         else
             this.counter = 0;

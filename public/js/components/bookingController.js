@@ -19,7 +19,7 @@ export default class BookingController {
         });
 
         this.api = new scheduleAPI("http://localhost:5000/schedule", "http://localhost:5000/courses");
-        this.appointmentMaker = new AppointmentMaker(this.template, this.container, this.selectNames, this.newBtn);
+        this.appointmentMaker = new AppointmentMaker(this.template, this.container, this.selectNames, this.newBtn, 2);
         this.cacheMangaer = new appointmentsCacher("appointments", 700);
         this.validator = new BookingValidator();
     }
