@@ -29,6 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const warningMessageElement = document.querySelector("#warning-pop-up");
     const confirmMessageElement = document.querySelector("#confirmation-pop-up");
 
-    const bookingController = new BookingController(appointmentsContainer, addNewAppointment, appointmentTemplate, "calendar-card-close", warningMessageElement, confirmMessageElement);
+    const bookingController = new BookingController(appointmentsContainer, addNewAppointment, appointmentTemplate, "calendar-card-close", warningMessageElement, confirmMessageElement, 3000);
     bookingController.init();
 })

@@ -602,7 +602,7 @@ a.facebook-logo {
 
     .warning {
         top: 12%;
-        aspect-ratio: 0;
+        aspect-ratio: 6;
     }
 
     .confirmation button:first-child {
