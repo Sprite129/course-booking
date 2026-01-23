@@ -326,7 +326,7 @@ hr {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    width: min(100%, 500px);
+    width: min(100%, 650px);
     aspect-ratio: 3;
     font-size: var(--font-size-0);
     position: fixed;

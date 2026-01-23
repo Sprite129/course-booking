@@ -113,6 +113,8 @@ export default class BookingController {
             this.saveAppointments();
 
             this.confirmElement.classList.remove("message-visible");
+
+            this.updateScroll();
         }
     }
 
