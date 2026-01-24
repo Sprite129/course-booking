@@ -7,6 +7,7 @@ import scheduleAPI from "../services/scheduleAPI.js";
 export default class BookingController {
     constructor(bookingContainer, newAppointmentButton, appointmentTemplate, closeButtonClass, warningMessageElement, confirmMessageElement, warningDisplayTime) {
         this.container = bookingContainer;
+        this.formElement = bookingContainer.parentElement;
         this.newBtn = newAppointmentButton;
         this.template = appointmentTemplate;
         this.closeBtnClass = closeButtonClass;
@@ -49,6 +50,10 @@ export default class BookingController {
         this.confirmElement.addEventListener("click", (e) => {
             this.onConfirmElemClick(e);
         })
+
+        this.formElement.addEventListener("submit", (e) => {
+            this.onSubmit(e);
+        })
     }
 
     checkForScroll() {
@@ -79,7 +84,9 @@ export default class BookingController {
 
         this.appointmentsMap.set(newAppointment.id, newAppointmentEntity);
         this.updateScroll(true);
-        this.saveAppointments();
+
+        const appointmentsData = this.collectAppointmentsData();
+        this.saveAppointments([...appointmentsData]);
     }
 
     onAppointmentChange(event) {
@@ -87,7 +94,9 @@ export default class BookingController {
         let appointmentEntity = this.appointmentsMap.get(appointmentCard.id);
 
         appointmentEntity.updateSelect(event.target);
-        this.saveAppointments();
+
+        const appointmentsData = this.collectAppointmentsData();
+        this.saveAppointments([...appointmentsData]);
     }
 
     onContainerClick(event) {
@@ -113,7 +122,8 @@ export default class BookingController {
             this.appointmentsMap.delete(this.appointmentToDelete.id);
             this.appointmentToDelete.remove();
 
-            this.saveAppointments();
+            const appointmentsData = this.collectAppointmentsData();
+            this.saveAppointments([...appointmentsData]);
 
             this.confirmElement.classList.remove("message-visible");
 
@@ -121,14 +131,23 @@ export default class BookingController {
         }
     }
 
-    saveAppointments() {
+    collectAppointmentsData() {
         let data = new Map();
 
         this.appointmentsMap.forEach((appointment, key) => {
             data.set(key, appointment.actualVals);
         })
 
-        this.cacheMangaer.debounceSave([...data]);
+        return data;
+    }
+
+    saveAppointments(data, immediateSave) {
+        if (immediateSave) {
+            this.cacheMangaer.save(data);
+            return;
+        }
+
+        this.cacheMangaer.debounceSave(data);
     }
 
     recoverAppointments() {
@@ -154,5 +173,17 @@ export default class BookingController {
         setInterval(() => {
             this.warningElement.classList.remove("message-visible");
         }, this.warningMessageDuration);
+    }
+
+    onSubmit(event) {
+        const appointmentsData = this.collectAppointmentsData();
+        const cleanData = this.validator.removeDuplicatesAndEmpty([...appointmentsData], true);
+        
+        if(!cleanData.length) {
+            event.preventDefault();
+            return;
+        }
+
+        this.saveAppointments(cleanData, true);
     }
 }

@@ -4,13 +4,15 @@ export default class BookingValidator {
             this.api = api;
     }
 
-    removeDuplicatesAndEmpty(data) {
+    removeDuplicatesAndEmpty(data, clearUncomplete) {
         let newData = data.filter((value, index, self) => {
             const current = value[1];
             if (this.isEmptyArray(current))
                 return false;
 
-            if (!this.isFullArray(current))
+            if (!this.isFullArray(current) && clearUncomplete)
+                return false;
+            else if(!this.isFullArray(current) && !clearUncomplete)
                 return true;
 
             return index === self.findIndex(t =>
