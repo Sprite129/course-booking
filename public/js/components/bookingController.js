@@ -176,14 +176,17 @@ export default class BookingController {
     }
 
     onSubmit(event) {
+        event.preventDefault();
+
         const appointmentsData = this.collectAppointmentsData();
         const cleanData = this.validator.removeDuplicatesAndEmpty([...appointmentsData], true);
         
         if(!cleanData.length) {
-            event.preventDefault();
             return;
         }
 
         this.saveAppointments(cleanData, true);
+
+        window.location.assign("../../pages/confirmation-page.html");
     }
 }
