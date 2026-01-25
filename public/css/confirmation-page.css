@@ -1,6 +1,8 @@
 :root {
     --main-color: #FA9147;
     --secondary-color: #003E6B;
+    --warning: #fa6666;
+    --warning-border: #ff1616;
 
     --font-size--2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
     --font-size--1: clamp(0.7292rem, 0.635rem + 0.471vw, 1rem);
@@ -69,6 +71,65 @@ h1 {
     font-size: var(--font-size-3);
     align-content: center;
     margin-bottom: 3vh;
+}
+
+.warning {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: min(100%, 650px);
+    aspect-ratio: 3;
+    font-size: var(--font-size-0);
+    position: fixed;
+    top: 0;
+    justify-self: center;
+    align-content: center;
+    text-align: center;
+    background-color: var(--warning);
+    border-left: 5px solid var(--warning-border);
+    border-right: 5px solid var(--warning-border);
+    color: var(--secondary-color);
+    z-index: 2;
+    transform: translateY(-300%);
+    opacity: 0;
+    transition: transform cubic-bezier(.42, -0.32, .58, 1.32) 0.3s, opacity ease-in-out 0.3s;
+}
+
+.warning p {
+    flex: 1 1 0;
+    align-content: center;
+    background: none;
+}
+
+.confirmation {
+    z-index: 3;
+}
+
+.message-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.confirmation button:first-child {
+    display: block;
+    width: 7%;
+    aspect-ratio: 1;
+    margin-left: auto;
+    margin-right: 3%;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    background-image: url("../assets/controls/cross.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.confirmation button:last-child {
+    width: 50%;
+    margin: 0 auto 10px;
+    background-color: lightgray;
+    color: black;
 }
 
 .form-item {
@@ -185,5 +246,21 @@ footer img {
 @media (min-height: 760px) {
     footer {
         display: block;
+    }
+}
+
+@media (min-width: 568px) {
+    .warning {
+        aspect-ratio: 6;
+    }
+
+    .confirmation button:first-child {
+        margin-top: 15px;
+        width: 5%;
+    }
+
+    .confirmation button:last-child {
+        margin: 15px auto;
+        width: 25%;
     }
 }
