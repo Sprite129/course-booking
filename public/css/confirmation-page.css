@@ -1,6 +1,6 @@
 :root {
     --main-color: #FA9147;
-    --secondary-lighter: #003E6B;
+    --secondary-color: #003E6B;
 
     --font-size--2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
     --font-size--1: clamp(0.7292rem, 0.635rem + 0.471vw, 1rem);
@@ -14,7 +14,7 @@
 
 * {
     margin: 0;
-    background-color: var(--main-color);
+    background-color: var(--secondary-color);
     color: white;
 }
 
@@ -40,7 +40,7 @@ a::before {
     display: inline-block;
     width: 100%;
     height: 100%;
-    background-image: url(../assets/controls/blue-arrow.svg);
+    background-image: url(../assets/controls/white-arrow.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 13px center;
@@ -90,7 +90,7 @@ ul {
     list-style-position: inside;
     padding: 0;
     mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
-    scrollbar-color: var(--secondary-lighter) transparent;
+    scrollbar-color: white transparent;
     scrollbar-width: thin;
 }
 
@@ -143,17 +143,18 @@ input[type=email]:focus {
 input[type=tel]:-webkit-autofill,
 input[type=email]:-webkit-autofill {
     -webkit-text-fill-color: #fff;
-    box-shadow: 0 0 0 50px var(--main-color) inset;
+    box-shadow: 0 0 0 50px var(--secondary-color) inset;
 }
 
 input[type=submit] {
     display: block;
     margin: 4vh auto;
-    background-color: var(--secondary-lighter);
+    background-color: var(--main-color);
     font-family: "Montserrat", "Poppins", "Nunito Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: var(--font-size-1);
     font-weight: 600;
-    padding: 13px 35px;
-    border-radius: 10px;
+    padding: 15px 35px;
+    border-radius: 15px;
     border: none;
     color: white;
     transition: transform ease-in-out 0.2s, background-color ease-in-out 0.2s;
@@ -174,10 +175,11 @@ footer {
     align-content: end;
     text-align: center;
     padding-bottom: 3vh;
+    overflow: hidden;
 }
 
 footer img {
-    width: min(60vw, 300px);
+    width: min(60vw, 250px);
 }
 
 @media (min-height: 760px) {
