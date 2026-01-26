@@ -1,34 +1,52 @@
+import CourseIdToString from "./courseIdToString.js";
+
 export default class AppointmentsList {
-    constructor(template, containerElement, insertTextElementClass, idName) {
+    constructor(template, containerElement, insertTextElementClass, api) {
         this.template = template;
         this.parent = containerElement;
         this.insertClass = insertTextElementClass;
-        this.idName = idName;
 
         this.idCounter = 0;
+
+        this.api = api;
+
+        this.ready = this.init(); 
     }
 
-    loadAndInsertAll(appointmentsData) {
-        appointmentsData.forEach(entry => {
-            const elem = this.template.content.cloneNode(true);
-            const textBox = elem.querySelector(`.${this.insertClass}`);
-            const elemContainerElement = elem.querySelector(`#${this.idName}`);
+    async init() {
+        const courses = await this.api.getCourses();
+        this.courseIdToName = new CourseIdToString(courses);
+    }
 
-            elemContainerElement.id = this.idName + "-" + this.idCounter;
-            
-            let message = "";
-            entry.forEach((val, index, array) => {
-                if(index < array.length - 1)
-                    message += `${val}, `;
-                else
-                    message += val;
-            });
+    createAndInsert(appointmentData, appointmentElementID) {
+        if(!this.courseIdToName) {
+            console.error("AppointmentsList service is not ready yet");
+            return;
+        }
 
-            textBox.textContent = message;
+        const elem = this.template.content.cloneNode(true);
+        const textBox = elem.querySelector(`.${this.insertClass}`);
+        const elemContainerElement = elem.querySelector("li");
 
-            this.parent.append(elem);
+        elemContainerElement.id = appointmentElementID;
 
-            this.idCounter++;
+        let message = "";
+        appointmentData.forEach((val, index, array) => {
+            if (!isNaN(+val)) {
+                message += `${this.courseIdToName.translate(val)}, `;
+                return
+            }
+
+            if (index < array.length - 1)
+                message += `${val}, `;
+            else
+                message += val;
         });
+
+        textBox.textContent = message;
+
+        this.parent.append(elem);
+
+        this.idCounter++;
     }
 }
